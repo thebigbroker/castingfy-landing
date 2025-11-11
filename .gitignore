@@ -1,0 +1,22 @@
+# Archivos sensibles
+CREDENTIALS.txt
+*.env
+.env.local
+
+# Sistema
+.DS_Store
+.vscode/
+.idea/
+
+# Node (si usas en el futuro)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Netlify
+.netlify/
+
+# Temporales
+*.log
+*.tmp
+.cache/

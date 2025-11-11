@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!--
+    ═══════════════════════════════════════════════════════════════════════════
+    CASTINGFY - LANDING PAGE ESTÁTICA
+    ═══════════════════════════════════════════════════════════════════════════
+
+    INSTRUCCIONES DE USO:
+    1. Descarga la carpeta completa (index.html, styles.css, script.js)
+    2. Abre index.html en tu navegador. No requiere servidor.
+
+    PERSONALIZACIÓN RÁPIDA:
+    - Colores: edita las variables CSS en :root dentro de styles.css
+    - Textos: busca los elementos con contenido y cámbialos directamente
+    - Imágenes: reemplaza los div.placeholder con <img> reales
+
+    MIGRACIÓN A WEBFLOW:
+    - Copia la estructura HTML respetando los <section> y jerarquía
+    - Mapea las clases a utilidades de Webflow (.container → Container, .btn-primary → Button Primary)
+    - Usa variables de Webflow para replicar las CSS variables de :root
+    - Los data-attributes están listos para tracking/analytics
+
+    DIMENSIONES SUGERIDAS PARA ASSETS:
+    - Hero image: 1440×900px
+    - Logos partner: 240×120px (grises, fondo transparente)
+    - Avatars testimonios: 96×96px (circular)
+    - Favicon: 32×32px (formato .ico o .png)
+  -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Castingfy — Tu casting, sin fricción | Portal de castings para España</title>
+  <meta name="description" content="Publica y descubre castings en minutos. La plataforma de castings pensada para el mercado español. Únete a la waitlist y accede antes que nadie.">
+  <meta name="keywords" content="castings, actores, modelos, agencias, directores casting, productoras, España">
+  <meta name="author" content="Castingfy">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (Facebook, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://castingfy.com">
+  <meta property="og:title" content="Castingfy — Tu casting, sin fricción">
+  <meta property="og:description" content="Publica y descubre castings en minutos. La plataforma de castings pensada para el mercado español.">
+  <meta property="og:image" content="https://castingfy.com/og-image.jpg">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://castingfy.com">
+  <meta name="twitter:title" content="Castingfy — Tu casting, sin fricción">
+  <meta name="twitter:description" content="Publica y descubre castings en minutos. La plataforma de castings pensada para el mercado español.">
+  <meta name="twitter:image" content="https://castingfy.com/twitter-image.jpg">
+
+  <!-- Favicon (placeholder) -->
+  <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Castingfy",
+    "url": "https://castingfy.com",
+    "logo": "https://castingfy.com/logo.png",
+    "description": "Portal de castings para el mercado español",
+    "sameAs": [
+      "https://twitter.com/castingfy",
+      "https://instagram.com/castingfy",
+      "https://linkedin.com/company/castingfy"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "email": "hola@castingfy.com",
+      "availableLanguage": ["es"]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Castingfy",
+    "url": "https://castingfy.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://castingfy.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       NAVBAR
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="container navbar__container">
+      <a href="#hero" class="navbar__logo" aria-label="Castingfy - Inicio">
+        <span class="navbar__logo-text">Castingfy</span>
+      </a>
+
+      <ul class="navbar__menu" role="list">
+        <li><a href="#beneficios" class="navbar__link">Beneficios</a></li>
+        <li><a href="#como-funciona" class="navbar__link">Cómo funciona</a></li>
+        <li><a href="#productores" class="navbar__link">Para Productores</a></li>
+        <li><a href="#talento" class="navbar__link">Para Talento</a></li>
+        <li><a href="#faq" class="navbar__link">FAQ</a></li>
+      </ul>
+
+      <a href="#waitlist" class="btn btn-primary btn-sm" data-cta="nav-waitlist">
+        Únete a la lista
+      </a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         HERO
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="hero" class="hero">
+      <div class="container hero__container">
+        <div class="hero__content">
+          <h1 class="hero__title">Tu casting, sin fricción.</h1>
+          <p class="hero__subtitle">
+            Publica y descubre castings en minutos. Pensado para el mercado español, abierto al mundo.
+          </p>
+
+          <form class="waitlist-form" id="waitlist-form-hero" data-location="hero">
+            <div class="form-group">
+              <label for="email-hero" class="visually-hidden">Email</label>
+              <input
+                type="email"
+                id="email-hero"
+                name="email"
+                class="form-input"
+                placeholder="tu@email.com"
+                required
+                aria-required="true"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="role-hero" class="visually-hidden">Soy...</label>
+              <select id="role-hero" name="role" class="form-select" required aria-required="true">
+                <option value="" disabled selected>Soy...</option>
+                <option value="productor">Productor/Agencia/Director de casting</option>
+                <option value="talento">Talento (Actor, Modelo, Creador)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" data-cta="hero-waitlist">
+              Únete a la waitlist
+            </button>
+          </form>
+
+          <p class="hero__disclaimer">
+            Acceso anticipado al MVP privado en Q1 2026. Sin compromiso.
+          </p>
+        </div>
+
+        <div class="hero__image">
+          <!-- Placeholder: reemplazar con imagen real 1440×900px -->
+          <div class="placeholder" style="padding-bottom: 62.5%;" role="img" aria-label="Ilustración de la plataforma Castingfy">
+            <span>🎬</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         BENEFICIOS
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="beneficios" class="benefits">
+      <div class="container">
+        <h2 class="section-title">¿Por qué Castingfy?</h2>
+        <p class="section-subtitle">
+          Eficiencia, transparencia y control para toda la industria.
+        </p>
+
+        <div class="grid grid-4">
+          <div class="card benefit-card">
+            <div class="benefit-card__icon">⚡</div>
+            <h3 class="benefit-card__title">Publica en 3 minutos</h3>
+            <p class="benefit-card__text">
+              Sin llamadas, sin Excel. Crea tu casting con plantillas inteligentes y llega al talento adecuado.
+            </p>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-card__icon">✓</div>
+            <h3 class="benefit-card__title">Talento verificado</h3>
+            <p class="benefit-card__text">
+              Perfiles completos, materiales al día y verificación opcional para mayor confianza.
+            </p>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-card__icon">🎯</div>
+            <h3 class="benefit-card__title">Match inteligente</h3>
+            <p class="benefit-card__text">
+              Filtros de casting precisos, shortlist en 1-click y notificaciones automáticas al talento.
+            </p>
+          </div>
+
+          <div class="card benefit-card">
+            <div class="benefit-card__icon">💬</div>
+            <h3 class="benefit-card__title">Mensajería y pagos</h3>
+            <p class="benefit-card__text">
+              <span class="badge badge-soon">Próximamente</span> Comunícate y gestiona pagos sin salir de la plataforma.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         CÓMO FUNCIONA
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="como-funciona" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">Cómo funciona</h2>
+        <p class="section-subtitle">
+          Simple, rápido y diseñado para tu flujo de trabajo.
+        </p>
+
+        <!-- Tabs para alternar audiencia -->
+        <div class="tabs" role="tablist" aria-label="Audiencia">
+          <button
+            class="tab tab-active"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel-productores"
+            id="tab-productores"
+            data-tab="productores"
+          >
+            Para Productores
+          </button>
+          <button
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel-talento"
+            id="tab-talento"
+            data-tab="talento"
+          >
+            Para Talento
+          </button>
+        </div>
+
+        <!-- Panel Productores -->
+        <div
+          id="panel-productores"
+          class="tab-panel tab-panel-active"
+          role="tabpanel"
+          aria-labelledby="tab-productores"
+        >
+          <div class="grid grid-3 steps">
+            <div class="step">
+              <div class="step__number">1</div>
+              <h3 class="step__title">Crea tu casting</h3>
+              <p class="step__text">
+                Usa plantillas o crea desde cero. Define roles, requisitos, fechas y ubicación en minutos.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step__number">2</div>
+              <h3 class="step__title">Publica y difunde</h3>
+              <p class="step__text">
+                Tu casting llega al talento relevante automáticamente. Comparte el enlace donde quieras.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step__number">3</div>
+              <h3 class="step__title">Recibe y gestiona</h3>
+              <p class="step__text">
+                Revisa candidatos, crea shortlists, contacta directamente y cierra tu casting sin complicaciones.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Talento -->
+        <div
+          id="panel-talento"
+          class="tab-panel"
+          role="tabpanel"
+          aria-labelledby="tab-talento"
+          hidden
+        >
+          <div class="grid grid-3 steps">
+            <div class="step">
+              <div class="step__number">1</div>
+              <h3 class="step__title">Crea tu perfil</h3>
+              <p class="step__text">
+                Añade tus datos, book, medidas, habilidades y experiencia. Todo en un solo lugar, siempre actualizado.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step__number">2</div>
+              <h3 class="step__title">Configura alertas</h3>
+              <p class="step__text">
+                Recibe notificaciones de castings que encajen contigo. Filtra por tipo, ubicación, fechas y más.
+              </p>
+            </div>
+
+            <div class="step">
+              <div class="step__number">3</div>
+              <h3 class="step__title">Aplica en 1-click</h3>
+              <p class="step__text">
+                Envía tu candidatura con un clic. Tu perfil y materiales llegan directamente a los productores.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         PARA PRODUCTORES
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="productores" class="audience-section">
+      <div class="container">
+        <div class="audience-grid">
+          <div class="audience-content">
+            <span class="audience-label">Para Productores y Agencias</span>
+            <h2 class="audience-title">Publica, filtra y contrata sin perder tiempo</h2>
+            <ul class="feature-list">
+              <li class="feature-list__item">
+                <span class="feature-list__icon">📋</span>
+                <div>
+                  <strong>Publicación rápida</strong>
+                  <p>Plantillas pre-configuradas por tipo de proyecto (cine, publicidad, teatro, TV).</p>
+                </div>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">🔍</span>
+                <div>
+                  <strong>Filtros avanzados</strong>
+                  <p>Edad, altura, idiomas, habilidades especiales, disponibilidad y ubicación.</p>
+                </div>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">📊</span>
+                <div>
+                  <strong>Gestión centralizada</strong>
+                  <p>Visualiza candidatos, compara perfiles, crea shortlists y exporta datos.</p>
+                </div>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">⭐</span>
+                <div>
+                  <strong>Shortlist colaborativa</strong>
+                  <p>Invita a tu equipo, comenta perfiles y toma decisiones en tiempo real.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="audience-image">
+            <!-- Placeholder: reemplazar con screenshot o ilustración -->
+            <div class="placeholder" style="padding-bottom: 75%;" role="img" aria-label="Interfaz de gestión para productores">
+              <span>🎥</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         PARA TALENTO
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="talento" class="audience-section audience-section-alt">
+      <div class="container">
+        <div class="audience-grid audience-grid-reverse">
+          <div class="audience-image">
+            <!-- Placeholder: reemplazar con screenshot o ilustración -->
+            <div class="placeholder" style="padding-bottom: 75%;" role="img" aria-label="Interfaz de perfil para talento">
+              <span>⭐</span>
+            </div>
+          </div>
+
+          <div class="audience-content">
+            <span class="audience-label">Para Talento</span>
+            <h2 class="audience-title">Tu perfil profesional, siempre listo</h2>
+            <ul class="feature-list">
+              <li class="feature-list__item">
+                <span class="feature-list__icon">👤</span>
+                <div>
+                  <strong>Perfil completo</strong>
+                  <p>Book digital, medidas, experiencia, habilidades y enlaces a tu trabajo.</p>
+                </div>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">🔔</span>
+                <div>
+                  <strong>Alertas personalizadas</strong>
+                  <p>Recibe notificaciones de castings que encajen con tu perfil y preferencias.</p>
+                </div>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">⚡</span>
+                <div>
+                  <strong>Aplicación instantánea</strong>
+                  <p>Envía tu candidatura en 1-click. Sin formularios repetitivos ni emails manuales.</p>
+                </div>
+              </li>
+              <li class="feature-list__item">
+                <span class="feature-list__icon">📈</span>
+                <div>
+                  <strong>Historial y estadísticas</strong>
+                  <p>Consulta tus aplicaciones, respuestas y mejora tu perfil con insights.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         SOCIAL PROOF
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section class="social-proof">
+      <div class="container">
+        <h2 class="section-title">Confiado por la industria</h2>
+
+        <!-- Logos placeholder (reemplazar con logos reales, grises, 240×120px) -->
+        <div class="logo-grid">
+          <div class="logo-item" aria-label="Partner 1">
+            <div class="placeholder-logo">PRODUCTORA</div>
+          </div>
+          <div class="logo-item" aria-label="Partner 2">
+            <div class="placeholder-logo">AGENCIA</div>
+          </div>
+          <div class="logo-item" aria-label="Partner 3">
+            <div class="placeholder-logo">ESCUELA</div>
+          </div>
+          <div class="logo-item" aria-label="Partner 4">
+            <div class="placeholder-logo">ESTUDIO</div>
+          </div>
+        </div>
+
+        <!-- Testimonios -->
+        <div class="grid grid-3 testimonials">
+          <div class="card testimonial">
+            <p class="testimonial__text">
+              "Antes perdíamos días gestionando emails. Con Castingfy todo está centralizado y el talento llega cualificado."
+            </p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar" aria-hidden="true">
+                <div class="placeholder-avatar">M</div>
+              </div>
+              <div>
+                <strong class="testimonial__name">Marta González</strong>
+                <span class="testimonial__role">Directora de Casting, Madrid</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card testimonial">
+            <p class="testimonial__text">
+              "Por fin una plataforma pensada para el mercado español. Aplicar a castings nunca fue tan fácil."
+            </p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar" aria-hidden="true">
+                <div class="placeholder-avatar">A</div>
+              </div>
+              <div>
+                <strong class="testimonial__name">Andrés Ruiz</strong>
+                <span class="testimonial__role">Actor, Barcelona</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card testimonial">
+            <p class="testimonial__text">
+              "Los filtros son increíbles. Encontramos perfiles que nunca habríamos descubierto de otra forma."
+            </p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar" aria-hidden="true">
+                <div class="placeholder-avatar">L</div>
+              </div>
+              <div>
+                <strong class="testimonial__name">Laura Fernández</strong>
+                <span class="testimonial__role">Productora Ejecutiva, Valencia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         PRICING (COMING SOON)
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <h2 class="section-title">Planes y precios</h2>
+        <p class="section-subtitle">
+          Acceso gratuito en el lanzamiento. Planes Pro y Business próximamente.
+        </p>
+
+        <div class="grid grid-3">
+          <div class="card pricing-card">
+            <h3 class="pricing-card__name">Free</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">€0</span>
+              <span class="pricing-card__period">/mes</span>
+            </div>
+            <p class="pricing-card__description">Perfecto para empezar y validar la plataforma.</p>
+            <ul class="pricing-card__features">
+              <li>✓ Publicar castings ilimitados</li>
+              <li>✓ Hasta 50 candidatos por casting</li>
+              <li>✓ Perfil básico de talento</li>
+              <li>✓ Búsqueda y filtros estándar</li>
+            </ul>
+            <span class="badge badge-soon">Pronto</span>
+          </div>
+
+          <div class="card pricing-card pricing-card-featured">
+            <div class="pricing-card__badge">Recomendado</div>
+            <h3 class="pricing-card__name">Pro</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">€49</span>
+              <span class="pricing-card__period">/mes</span>
+            </div>
+            <p class="pricing-card__description">Para productores y agencias profesionales.</p>
+            <ul class="pricing-card__features">
+              <li>✓ Todo en Free</li>
+              <li>✓ Candidatos ilimitados</li>
+              <li>✓ Shortlist colaborativa</li>
+              <li>✓ Filtros avanzados y guardados</li>
+              <li>✓ Estadísticas detalladas</li>
+            </ul>
+            <span class="badge badge-soon">Pronto</span>
+          </div>
+
+          <div class="card pricing-card">
+            <h3 class="pricing-card__name">Business</h3>
+            <div class="pricing-card__price">
+              <span class="pricing-card__amount">€199</span>
+              <span class="pricing-card__period">/mes</span>
+            </div>
+            <p class="pricing-card__description">Para estudios y productoras grandes.</p>
+            <ul class="pricing-card__features">
+              <li>✓ Todo en Pro</li>
+              <li>✓ Multi-usuario (hasta 10)</li>
+              <li>✓ API y integraciones</li>
+              <li>✓ Soporte prioritario</li>
+              <li>✓ Onboarding personalizado</li>
+            </ul>
+            <span class="badge badge-soon">Pronto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         FAQ
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="faq" class="faq">
+      <div class="container container-narrow">
+        <h2 class="section-title">Preguntas frecuentes</h2>
+
+        <div class="accordion" role="region" aria-label="Preguntas frecuentes">
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-1"
+                id="faq-trigger-1"
+              >
+                <span>¿Cuándo lanzáis la plataforma?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-1"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-1"
+              hidden
+            >
+              <p>
+                Nuestro MVP privado estará disponible en <strong>Q1 2026</strong>. Los usuarios de la waitlist tendrán acceso anticipado y participarán en el proceso de mejora continua. Enviaremos invitaciones progresivamente según el orden de registro.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-2"
+                id="faq-trigger-2"
+              >
+                <span>¿Tiene coste usar Castingfy?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-2"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-2"
+              hidden
+            >
+              <p>
+                Lanzaremos con un <strong>plan Free completamente funcional</strong> para que puedas probar la plataforma sin compromiso. Los planes Pro y Business con funcionalidades avanzadas (equipos, integraciones, soporte prioritario) llegarán después del MVP. Toda la información de precios será transparente y sin sorpresas.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-3"
+                id="faq-trigger-3"
+              >
+                <span>¿Es solo para España o también internacional?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-3"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-3"
+              hidden
+            >
+              <p>
+                Estamos <strong>enfocados en el mercado español</strong> para el MVP, pero con apertura progresiva a Latinoamérica y Europa. La plataforma está pensada para funcionar globalmente, adaptándose a las particularidades de cada región (idiomas, regulaciones, monedas).
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-4"
+                id="faq-trigger-4"
+              >
+                <span>¿Cómo protegéis mis datos personales?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-4"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-4"
+              hidden
+            >
+              <p>
+                Cumplimos estrictamente con el <strong>RGPD</strong> (Reglamento General de Protección de Datos). Tus datos están cifrados, nunca se comparten con terceros sin tu consentimiento y puedes exportarlos o eliminarlos en cualquier momento. Más información en nuestra política de privacidad (disponible en el lanzamiento).
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-5"
+                id="faq-trigger-5"
+              >
+                <span>¿Puedo usar Castingfy si soy freelance?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-5"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-5"
+              hidden
+            >
+              <p>
+                ¡Por supuesto! Castingfy está pensado tanto para <strong>agencias y productoras</strong> como para <strong>directores de casting freelance</strong>. El plan Free es ideal para proyectos puntuales, y los planes Pro/Business para quienes gestionan múltiples castings simultáneos.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-6"
+                id="faq-trigger-6"
+              >
+                <span>¿Qué diferencia a Castingfy de otras plataformas?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-6"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-6"
+              hidden
+            >
+              <p>
+                Castingfy está <strong>diseñado específicamente para el mercado español</strong>, con flujos pensados para nuestras necesidades (idiomas, tipos de proyecto, regulaciones). Además, priorizamos la <strong>eficiencia</strong> (menos clics, más automatización) y la <strong>transparencia</strong> (sin sorpresas en precios ni procesos).
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-7"
+                id="faq-trigger-7"
+              >
+                <span>¿Necesito conocimientos técnicos para usar la plataforma?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-7"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-7"
+              hidden
+            >
+              <p>
+                <strong>No</strong>. Castingfy está diseñado para que cualquier persona sin conocimientos técnicos pueda publicar un casting o crear su perfil en minutos. Incluiremos tutoriales, tooltips y soporte por email/chat para ayudarte en todo momento.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3>
+              <button
+                class="accordion-trigger"
+                aria-expanded="false"
+                aria-controls="faq-8"
+                id="faq-trigger-8"
+              >
+                <span>¿Puedo cancelar o salir de la waitlist?</span>
+                <span class="accordion-icon" aria-hidden="true">+</span>
+              </button>
+            </h3>
+            <div
+              id="faq-8"
+              class="accordion-content"
+              role="region"
+              aria-labelledby="faq-trigger-8"
+              hidden
+            >
+              <p>
+                Sí, en cualquier momento. Unirte a la waitlist <strong>no implica ningún compromiso</strong>. Solo recibirás actualizaciones sobre el lanzamiento y podrás darte de baja con un clic en cualquier email que te enviemos.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         WAITLIST (CTA FINAL)
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="waitlist" class="waitlist-cta">
+      <div class="container container-narrow">
+        <h2 class="waitlist-cta__title">Únete a la revolución del casting en España</h2>
+        <p class="waitlist-cta__subtitle">
+          Acceso anticipado, sin compromiso. Sé de los primeros en probar Castingfy.
+        </p>
+
+        <form class="waitlist-form waitlist-form-large" id="waitlist-form-footer" data-location="footer">
+          <div class="form-row">
+            <div class="form-group form-group-grow">
+              <label for="email-footer" class="visually-hidden">Email</label>
+              <input
+                type="email"
+                id="email-footer"
+                name="email"
+                class="form-input"
+                placeholder="tu@email.com"
+                required
+                aria-required="true"
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="role-footer" class="visually-hidden">Soy...</label>
+              <select id="role-footer" name="role" class="form-select" required aria-required="true">
+                <option value="" disabled selected>Soy...</option>
+                <option value="productor">Productor/Agencia/Director de casting</option>
+                <option value="talento">Talento (Actor, Modelo, Creador)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" data-cta="footer-waitlist">
+              Únete ahora
+            </button>
+          </div>
+        </form>
+
+        <p class="waitlist-cta__disclaimer">
+          Al unirte aceptas recibir actualizaciones sobre Castingfy. Puedes darte de baja en cualquier momento.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <div class="footer__brand">
+          <h3 class="footer__logo">Castingfy</h3>
+          <p class="footer__tagline">
+            Tu casting, sin fricción. Pensado para España, abierto al mundo.
+          </p>
+          <div class="footer__social">
+            <!-- Iconos SVG simples -->
+            <a href="https://twitter.com/castingfy" class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/castingfy" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"/>
+              </svg>
+            </a>
+            <a href="https://linkedin.com/company/castingfy" class="footer__social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <h4 class="footer__links-title">Producto</h4>
+          <ul class="footer__links-list">
+            <li><a href="#beneficios">Beneficios</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+            <li><a href="#pricing">Precios</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4 class="footer__links-title">Empresa</h4>
+          <ul class="footer__links-list">
+            <li><a href="#about">Sobre nosotros</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#careers">Careers</a></li>
+            <li><a href="#press">Prensa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__links">
+          <h4 class="footer__links-title">Legal</h4>
+          <ul class="footer__links-list">
+            <li><a href="#privacy">Privacidad</a></li>
+            <li><a href="#terms">Términos</a></li>
+            <li><a href="#cookies">Cookies</a></li>
+            <li><a href="#gdpr">RGPD</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__contact">
+          <h4 class="footer__links-title">Contacto</h4>
+          <p>
+            <a href="mailto:hola@castingfy.com" class="footer__contact-link">hola@castingfy.com</a>
+          </p>
+          <p class="footer__contact-text">
+            Madrid, España
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__copyright">
+          © 2025 Castingfy. Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast notification (hidden by default) -->
+  <div id="toast" class="toast" role="alert" aria-live="polite" aria-atomic="true" hidden>
+    <span id="toast-message"></span>
+  </div>
+
+  <!--
+    ═══════════════════════════════════════════════════════════════════════════
+    ANALYTICS PLACEHOLDER
+    ═══════════════════════════════════════════════════════════════════════════
+    Descomenta y añade tu código de Google Analytics, Plausible, etc.
+  -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+  -->
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro - Castingfy</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0b0b10 0%, #1a1a2e 100%);
+      color: #e8eaf1;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo h1 {
+      font-size: 32px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6dcff6 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .card {
+      background: #11131a;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+      border: 1px solid rgba(109, 207, 246, 0.1);
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #a0a6b0;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #e8eaf1;
+    }
+
+    .required {
+      color: #ef4444;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      background: #0b0b10;
+      border: 1px solid rgba(109, 207, 246, 0.2);
+      border-radius: 8px;
+      color: #e8eaf1;
+      transition: all 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #6dcff6;
+      box-shadow: 0 0 0 3px rgba(109, 207, 246, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .radio-option {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .radio-option input[type="radio"] {
+      margin-right: 8px;
+    }
+
+    .radio-option label {
+      display: inline;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .conditional-section {
+      display: none;
+      margin-top: 30px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(109, 207, 246, 0.1);
+    }
+
+    .conditional-section.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #6dcff6;
+    }
+
+    .upload-widget {
+      margin-top: 10px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 30px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6dcff6 0%, #a78bfa 100%);
+      color: #0b0b10;
+      box-shadow: 0 4px 12px rgba(109, 207, 246, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(109, 207, 246, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: #a0a6b0;
+    }
+
+    .checkbox-label input {
+      margin-top: 2px;
+    }
+
+    .checkbox-label a {
+      color: #6dcff6;
+      text-decoration: none;
+    }
+
+    .helper-text {
+      font-size: 12px;
+      color: #a0a6b0;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 30px 20px;
+      }
+
+      h2 {
+        font-size: 24px;
+      }
+
+      .radio-option {
+        min-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <h1>Castingfy</h1>
+    </div>
+
+    <div class="card">
+      <h2>Únete a Castingfy</h2>
+      <p class="subtitle">Crea tu cuenta y comienza a explorar oportunidades</p>
+
+      <form id="registro-form" data-netlify="true" name="registro-castingfy">
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required placeholder="tu@email.com">
+        </div>
+
+        <!-- Nombre -->
+        <div class="form-group">
+          <label for="nombre">Nombre completo / Artístico <span class="required">*</span></label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Ana García">
+        </div>
+
+        <!-- Rol -->
+        <div class="form-group">
+          <label>¿Qué eres? <span class="required">*</span></label>
+          <div class="radio-group">
+            <div class="radio-option">
+              <input type="radio" id="role-talento" name="role" value="talento" required>
+              <label for="role-talento">Talento (Actor, Modelo, Creador)</label>
+            </div>
+            <div class="radio-option">
+              <input type="radio" id="role-productor" name="role" value="productor">
+              <label for="role-productor">Productor / Agencia / Director</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección para Talento -->
+        <div id="seccion-talento" class="conditional-section">
+          <h3 class="section-title">Tu perfil de talento</h3>
+
+          <div class="form-group">
+            <label for="ubicacion">Ubicación <span class="required">*</span></label>
+            <input type="text" id="ubicacion" name="ubicacion" placeholder="Madrid, España">
+          </div>
+
+          <div class="form-group">
+            <label for="edad">Edad</label>
+            <input type="number" id="edad" name="edad" placeholder="25" min="16" max="99">
+          </div>
+
+          <div class="form-group">
+            <label for="genero">Género</label>
+            <select id="genero" name="genero">
+              <option value="">Selecciona...</option>
+              <option value="hombre">Hombre</option>
+              <option value="mujer">Mujer</option>
+              <option value="no-binario">No binario</option>
+              <option value="prefiero-no-decir">Prefiero no decir</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="altura">Altura (cm)</label>
+            <input type="number" id="altura" name="altura" placeholder="170" min="100" max="250">
+          </div>
+
+          <div class="form-group">
+            <label for="bio-talento">Cuéntanos sobre ti</label>
+            <textarea id="bio-talento" name="bio" placeholder="Experiencia, habilidades, intereses..."></textarea>
+            <p class="helper-text">Describe tu experiencia, formación y qué tipo de proyectos buscas.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="headshot">Headshot / Foto de perfil <span class="required">*</span></label>
+            <input type="hidden"
+                   role="uploadcare-uploader"
+                   id="headshot"
+                   name="headshot"
+                   data-public-key="795b6f11813228df93af"
+                   data-images-only="true"
+                   data-crop="free"
+                   data-tabs="file camera"
+                   data-locale="es"
+                   data-max-size="10485760" />
+            <p class="helper-text">Foto profesional tipo headshot. Máximo 10MB.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="reel">Video Reel (opcional)</label>
+            <input type="hidden"
+                   role="uploadcare-uploader"
+                   id="reel"
+                   name="reel"
+                   data-public-key="795b6f11813228df93af"
+                   data-accept="video/*"
+                   data-tabs="file"
+                   data-locale="es"
+                   data-max-size="104857600" />
+            <p class="helper-text">Video demo de tu trabajo. Máximo 100MB.</p>
+          </div>
+        </div>
+
+        <!-- Sección para Productor -->
+        <div id="seccion-productor" class="conditional-section">
+          <h3 class="section-title">Tu perfil de productor</h3>
+
+          <div class="form-group">
+            <label for="empresa">Nombre de la empresa <span class="required">*</span></label>
+            <input type="text" id="empresa" name="empresa" placeholder="Producciones Ejemplo S.L.">
+          </div>
+
+          <div class="form-group">
+            <label for="tipo-proyectos">Tipo de proyectos</label>
+            <select id="tipo-proyectos" name="tipo_proyectos">
+              <option value="">Selecciona...</option>
+              <option value="cine">Cine</option>
+              <option value="tv">TV</option>
+              <option value="teatro">Teatro</option>
+              <option value="publicidad">Publicidad</option>
+              <option value="web">Web/Digital</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="website">Website (opcional)</label>
+            <input type="text" id="website" name="website" placeholder="https://tuproducciones.com">
+          </div>
+
+          <div class="form-group">
+            <label for="creditos">Créditos anteriores</label>
+            <textarea id="creditos" name="creditos" placeholder="Proyectos destacados en los que has trabajado..."></textarea>
+          </div>
+        </div>
+
+        <!-- Términos -->
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" name="acepto_terminos" required>
+            <span>Acepto los <a href="/terminos" target="_blank">términos y condiciones</a> y la <a href="/privacidad" target="_blank">política de privacidad</a></span>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn btn-primary">
+          Crear mi cuenta
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Uploadcare Widget -->
+  <script>
+    UPLOADCARE_PUBLIC_KEY = '795b6f11813228df93af';
+    UPLOADCARE_LOCALE = 'es';
+  </script>
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+
+  <!-- Script para mostrar/ocultar secciones -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const radioTalento = document.getElementById('role-talento');
+      const radioProductor = document.getElementById('role-productor');
+      const seccionTalento = document.getElementById('seccion-talento');
+      const seccionProductor = document.getElementById('seccion-productor');
+
+      function actualizarFormulario() {
+        if (radioTalento.checked) {
+          seccionTalento.classList.add('active');
+          seccionProductor.classList.remove('active');
+
+          // Hacer campos de talento requeridos
+          document.getElementById('ubicacion').required = true;
+          document.getElementById('headshot').required = true;
+
+          // Quitar required de productor
+          document.getElementById('empresa').required = false;
+        } else if (radioProductor.checked) {
+          seccionTalento.classList.remove('active');
+          seccionProductor.classList.add('active');
+
+          // Hacer campos de productor requeridos
+          document.getElementById('empresa').required = true;
+
+          // Quitar required de talento
+          document.getElementById('ubicacion').required = false;
+          document.getElementById('headshot').required = false;
+        }
+      }
+
+      radioTalento.addEventListener('change', actualizarFormulario);
+      radioProductor.addEventListener('change', actualizarFormulario);
+
+      // Form submission (Netlify Forms maneja esto automáticamente)
+      const form = document.getElementById('registro-form');
+      form.addEventListener('submit', function(e) {
+        console.log('Formulario enviado');
+        // Netlify Forms captura esto automáticamente
+      });
+    });
+  </script>
+
+</body>
+</html>
