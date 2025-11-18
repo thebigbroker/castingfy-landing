@@ -389,16 +389,27 @@ function initNavbarDropdowns() {
  */
 function initMobileMenu() {
   const mobileToggle = document.querySelector('.navbar__mobile-toggle');
-  const navbar = document.querySelector('.navbar');
+  const navbarMenu = document.querySelector('.navbar__menu');
 
-  if (!mobileToggle) return;
+  if (!mobileToggle || !navbarMenu) return;
 
   mobileToggle.addEventListener('click', () => {
     const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
     mobileToggle.setAttribute('aria-expanded', !isExpanded);
 
     // Toggle clase para mostrar/ocultar menú móvil
-    // Esto requeriría CSS adicional para el menú móvil completo
+    mobileToggle.classList.toggle('is-active');
+    navbarMenu.classList.toggle('is-active');
+  });
+
+  // Cerrar menú al hacer click en un link
+  const navLinks = navbarMenu.querySelectorAll('.navbar__link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileToggle.classList.remove('is-active');
+      navbarMenu.classList.remove('is-active');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+    });
   });
 }
 
