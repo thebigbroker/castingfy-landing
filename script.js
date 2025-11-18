@@ -342,6 +342,67 @@ function initAllRotatingTexts() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   DROPDOWNS DEL NAVBAR
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Inicializa los menús desplegables del navbar
+ */
+function initNavbarDropdowns() {
+  const dropdownButtons = document.querySelectorAll('.navbar__link--dropdown');
+
+  dropdownButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+      // Cerrar todos los dropdowns
+      dropdownButtons.forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle el actual
+      if (!isExpanded) {
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Cerrar dropdowns al hacer click fuera
+  document.addEventListener('click', () => {
+    dropdownButtons.forEach(btn => {
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Prevenir que se cierre al hacer click dentro del dropdown
+  const dropdownMenus = document.querySelectorAll('.navbar__dropdown-menu');
+  dropdownMenus.forEach(menu => {
+    menu.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  });
+}
+
+/**
+ * Inicializa el menú móvil
+ */
+function initMobileMenu() {
+  const mobileToggle = document.querySelector('.navbar__mobile-toggle');
+  const navbar = document.querySelector('.navbar');
+
+  if (!mobileToggle) return;
+
+  mobileToggle.addEventListener('click', () => {
+    const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+    mobileToggle.setAttribute('aria-expanded', !isExpanded);
+
+    // Toggle clase para mostrar/ocultar menú móvil
+    // Esto requeriría CSS adicional para el menú móvil completo
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    NAVEGACIÓN SUAVE
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -390,6 +451,8 @@ function init() {
   console.log('🎬 Castingfy - Landing page cargada');
 
   // Inicializar componentes
+  initNavbarDropdowns();
+  initMobileMenu();
   initHeroSwitch();
   initAllRotatingTexts();
   initWaitlistForms();

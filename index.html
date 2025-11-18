@@ -104,21 +104,66 @@
        ═══════════════════════════════════════════════════════════════════════════ -->
   <nav class="navbar" role="navigation" aria-label="Navegación principal">
     <div class="container navbar__container">
+      <!-- Logo -->
       <a href="#hero" class="navbar__logo" aria-label="Castingfy - Inicio">
+        <span class="navbar__logo-icon">🎬</span>
         <span class="navbar__logo-text">Castingfy</span>
       </a>
 
+      <!-- Menú principal -->
       <ul class="navbar__menu" role="list">
-        <li><a href="#beneficios" class="navbar__link">Beneficios</a></li>
-        <li><a href="#como-funciona" class="navbar__link">Cómo funciona</a></li>
-        <li><a href="#productores" class="navbar__link">Para Productores</a></li>
-        <li><a href="#talento" class="navbar__link">Para Talento</a></li>
-        <li><a href="#faq" class="navbar__link">FAQ</a></li>
+        <li><a href="#castings" class="navbar__link">Castings</a></li>
+        <li><a href="#encuentra-talento" class="navbar__link">Encuentra Talento</a></li>
+
+        <!-- Dropdown Recursos -->
+        <li class="navbar__dropdown">
+          <button class="navbar__link navbar__link--dropdown" aria-haspopup="true" aria-expanded="false">
+            Recursos
+            <svg class="navbar__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M6 8L2 4h8L6 8z"/>
+            </svg>
+          </button>
+          <ul class="navbar__dropdown-menu" role="menu">
+            <li><a href="#articulos/como-preparar-casting" class="navbar__dropdown-item">Cómo preparar un casting perfecto</a></li>
+            <li><a href="#articulos/errores-comunes" class="navbar__dropdown-item">10 errores comunes en castings</a></li>
+            <li><a href="#articulos/guia-directores" class="navbar__dropdown-item">Guía para directores de casting</a></li>
+            <li><a href="#articulos/tips-actores" class="navbar__dropdown-item">Tips para actores principiantes</a></li>
+            <li><a href="#articulos/tendencias-2025" class="navbar__dropdown-item">Tendencias de la industria 2025</a></li>
+          </ul>
+        </li>
+
+        <!-- Dropdown Agentes -->
+        <li class="navbar__dropdown">
+          <button class="navbar__link navbar__link--dropdown" aria-haspopup="true" aria-expanded="false">
+            Agentes
+            <svg class="navbar__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+              <path d="M6 8L2 4h8L6 8z"/>
+            </svg>
+          </button>
+          <ul class="navbar__dropdown-menu" role="menu">
+            <li><a href="#agentes" class="navbar__dropdown-item navbar__dropdown-item--featured">Para Representar Talento</a></li>
+            <li class="navbar__dropdown-divider"></li>
+            <li><a href="#agentes/beneficios" class="navbar__dropdown-item">Beneficios para agencias</a></li>
+            <li><a href="#agentes/precios" class="navbar__dropdown-item">Planes y precios</a></li>
+          </ul>
+        </li>
       </ul>
 
-      <a href="#waitlist" class="btn btn-primary btn-sm" data-cta="nav-waitlist">
-        Únete a la lista
-      </a>
+      <!-- Botones de acción -->
+      <div class="navbar__actions">
+        <a href="#iniciar-sesion" class="navbar__link navbar__link--action">Iniciar sesión</a>
+        <a href="registro.html" class="btn btn-outline btn-sm" data-cta="nav-register">
+          Registrarse
+        </a>
+        <a href="#publicar-trabajo" class="btn btn-primary btn-sm" data-cta="nav-post-job">
+          Publicar un trabajo
+        </a>
+      </div>
+
+      <!-- Menú móvil hamburguesa -->
+      <button class="navbar__mobile-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span class="navbar__hamburger"></span>
+      </button>
     </div>
   </nav>
 
@@ -290,6 +335,72 @@
             <div class="trusted-by__logo-placeholder">
               <span>⭐</span>
               <span class="trusted-by__logo-text">Influyentes Cantabria</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         PARA AGENTES
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section id="agentes" class="agents-section">
+      <div class="container">
+        <div class="agents-section__header">
+          <span class="agents-section__label">Para Representar Talento</span>
+          <h2 class="agents-section__title">
+            Representa a tu talento en el marketplace más confiable de la industria
+          </h2>
+          <p class="agents-section__subtitle">
+            Obtén acceso a miles de trabajos para enviar a tus clientes y hacer crecer tu red.
+          </p>
+          <button class="btn btn-primary btn-lg" data-cta="agents-get-started">
+            Comenzar
+          </button>
+        </div>
+
+        <div class="agents-section__content">
+          <h3 class="agents-section__content-title">Gestiona y representa a tu talento de manera efectiva</h3>
+
+          <div class="agents-steps">
+            <div class="agents-step">
+              <div class="agents-step__number">1</div>
+              <div class="agents-step__content">
+                <h4 class="agents-step__title">Construye e incorpora tu roster</h4>
+                <p class="agents-step__text">
+                  Configura tu agencia en solo unos clics. Añade a tus clientes y gestiona sus perfiles para asegurar que estén preparados para el éxito. Invita a tu equipo a añadir sus rosters y comenzar a enviar propuestas hoy mismo.
+                </p>
+              </div>
+            </div>
+
+            <div class="agents-step">
+              <div class="agents-step__number">2</div>
+              <div class="agents-step__content">
+                <h4 class="agents-step__title">Gestiona propuestas con facilidad</h4>
+                <p class="agents-step__text">
+                  Busca en el marketplace de Castingfy todo tipo de trabajos - desde largometrajes hasta contenido de marca. Puedes personalizar aplicaciones o enviar con un clic para que tu talento sea contratado por los nombres más importantes del casting.
+                </p>
+              </div>
+            </div>
+
+            <div class="agents-step">
+              <div class="agents-step__number">3</div>
+              <div class="agents-step__content">
+                <h4 class="agents-step__title">Consigue trabajos en todo el mundo</h4>
+                <p class="agents-step__text">
+                  Con miles de oportunidades a tu alcance, desarrolla tu talento rápidamente construyendo sus créditos y ganando exposición. Nuestras herramientas de flujo de trabajo están diseñadas con flexibilidad en mente, permitiéndote trabajar de la manera que prefieras.
+                </p>
+              </div>
+            </div>
+
+            <div class="agents-step">
+              <div class="agents-step__number">4</div>
+              <div class="agents-step__content">
+                <h4 class="agents-step__title">Representa a tu talento con confianza</h4>
+                <p class="agents-step__text">
+                  Conéctate con productores, directores de casting y creadores de todo el mundo mientras construyes reconocimiento para tu empresa en toda la industria.
+                </p>
+              </div>
             </div>
           </div>
         </div>
