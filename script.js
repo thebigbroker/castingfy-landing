@@ -256,6 +256,92 @@ function initTabs() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   HERO SWITCH
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Inicializa el switch entre vistas de Talento y Productora
+ */
+function initHeroSwitch() {
+  const switchButtons = document.querySelectorAll('.hero__switch-btn');
+  const views = document.querySelectorAll('.hero__view');
+
+  switchButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const targetView = button.getAttribute('data-view');
+
+      // Actualizar botones
+      switchButtons.forEach(btn => {
+        btn.classList.remove('hero__switch-btn--active');
+      });
+      button.classList.add('hero__switch-btn--active');
+
+      // Actualizar vistas
+      views.forEach(view => {
+        const viewType = view.getAttribute('data-view-content');
+        if (viewType === targetView) {
+          view.classList.add('hero__view--active');
+          // Reiniciar animación de texto rotativo
+          const rotatingText = view.querySelector('.hero__rotating-text');
+          if (rotatingText) {
+            initRotatingText(rotatingText);
+          }
+        } else {
+          view.classList.remove('hero__view--active');
+        }
+      });
+    });
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEXTO ROTATIVO
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Inicializa el texto rotativo en el hero
+ */
+function initRotatingText(element) {
+  if (!element) return;
+
+  const words = JSON.parse(element.getAttribute('data-words') || '[]');
+  if (words.length === 0) return;
+
+  let currentIndex = 0;
+
+  function rotateText() {
+    element.style.opacity = '0';
+
+    setTimeout(() => {
+      element.textContent = words[currentIndex];
+      element.style.opacity = '1';
+      currentIndex = (currentIndex + 1) % words.length;
+    }, 300);
+  }
+
+  // Mostrar primera palabra
+  element.textContent = words[0];
+  element.style.transition = 'opacity 300ms ease';
+
+  // Rotar cada 3 segundos
+  setInterval(rotateText, 3000);
+}
+
+/**
+ * Inicializa todos los textos rotativos
+ */
+function initAllRotatingTexts() {
+  // Solo inicializar el texto de la vista activa
+  const activeView = document.querySelector('.hero__view--active');
+  if (activeView) {
+    const rotatingText = activeView.querySelector('.hero__rotating-text');
+    if (rotatingText) {
+      initRotatingText(rotatingText);
+    }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    NAVEGACIÓN SUAVE
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -304,6 +390,8 @@ function init() {
   console.log('🎬 Castingfy - Landing page cargada');
 
   // Inicializar componentes
+  initHeroSwitch();
+  initAllRotatingTexts();
   initWaitlistForms();
   initAccordion();
   initTabs();

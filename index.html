@@ -128,50 +128,169 @@
          HERO
          ═══════════════════════════════════════════════════════════════════════════ -->
     <section id="hero" class="hero">
-      <div class="container hero__container">
-        <div class="hero__content">
-          <h1 class="hero__title">Tu casting, sin fricción.</h1>
-          <p class="hero__subtitle">
-            Publica y descubre castings en minutos. Pensado para el mercado español, abierto al mundo.
-          </p>
-
-          <form class="waitlist-form" id="waitlist-form-hero" data-location="hero">
-            <div class="form-group">
-              <label for="email-hero" class="visually-hidden">Email</label>
-              <input
-                type="email"
-                id="email-hero"
-                name="email"
-                class="form-input"
-                placeholder="tu@email.com"
-                required
-                aria-required="true"
-              >
-            </div>
-
-            <div class="form-group">
-              <label for="role-hero" class="visually-hidden">Soy...</label>
-              <select id="role-hero" name="role" class="form-select" required aria-required="true">
-                <option value="" disabled selected>Soy...</option>
-                <option value="productor">Productor/Agencia/Director de casting</option>
-                <option value="talento">Talento (Actor, Modelo, Creador)</option>
-              </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary" data-cta="hero-waitlist">
-              Únete a la waitlist
-            </button>
-          </form>
-
-          <p class="hero__disclaimer">
-            Acceso anticipado al MVP privado en Q1 2026. Sin compromiso.
-          </p>
+      <div class="container">
+        <!-- Switch entre Talento y Productora -->
+        <div class="hero__switch">
+          <button class="hero__switch-btn hero__switch-btn--active" data-view="talent">
+            Soy un Talento
+          </button>
+          <button class="hero__switch-btn" data-view="producer">
+            Busco Talentos
+          </button>
         </div>
 
-        <div class="hero__image">
-          <!-- Placeholder: reemplazar con imagen real 1440×900px -->
-          <div class="placeholder" style="padding-bottom: 62.5%;" role="img" aria-label="Ilustración de la plataforma Castingfy">
-            <span>🎬</span>
+        <!-- Vista para Talento -->
+        <div class="hero__view hero__view--active" data-view-content="talent">
+          <div class="hero__container">
+            <div class="hero__content">
+              <h1 class="hero__title">
+                El lugar para<br>ser contratado para
+                <span class="hero__rotating-text" data-words='["películas","series de TV","comerciales","voice over","teatro","trabajos UGC"]'></span>
+              </h1>
+
+              <div class="hero__stats">
+                <div class="hero__stat">
+                  <span class="hero__stat-number">65+</span>
+                  <span class="hero__stat-label">años de confianza en la industria</span>
+                </div>
+                <div class="hero__stat">
+                  <span class="hero__stat-number">1k+</span>
+                  <span class="hero__stat-label">agentes de talento buscando</span>
+                </div>
+                <div class="hero__stat">
+                  <span class="hero__stat-number">14k+</span>
+                  <span class="hero__stat-label">roles agregados mensualmente</span>
+                </div>
+                <div class="hero__stat">
+                  <span class="hero__stat-number">280k+</span>
+                  <span class="hero__stat-label">profesionales buscando talento</span>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-lg" data-cta="talent-join">
+                Únete Ahora
+              </button>
+
+              <p class="hero__trust">Confiado por las mejores marcas y estudios</p>
+            </div>
+
+            <div class="hero__image">
+              <!-- Placeholder: reemplazar con imagen/video de talentos -->
+              <div class="placeholder" style="padding-bottom: 62.5%;" role="img" aria-label="Talentos en acción">
+                <span>🎭</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vista para Productora -->
+        <div class="hero__view" data-view-content="producer">
+          <div class="hero__container">
+            <div class="hero__content">
+              <h1 class="hero__title">
+                Encuentra tu próximo
+                <span class="hero__rotating-text" data-words='["actor","modelo","artista de voice over","miembro del equipo","creador de contenido"]'></span>
+              </h1>
+
+              <div class="hero__stats">
+                <div class="hero__stat">
+                  <span class="hero__stat-number">GRATIS</span>
+                  <span class="hero__stat-label">para crear una cuenta de contratación</span>
+                </div>
+                <div class="hero__stat">
+                  <span class="hero__stat-number">1M+</span>
+                  <span class="hero__stat-label">talentos en todo el mundo</span>
+                </div>
+                <div class="hero__stat">
+                  <span class="hero__stat-number">1M+</span>
+                  <span class="hero__stat-label">proyectos completados exitosamente</span>
+                </div>
+                <div class="hero__stat">
+                  <span class="hero__stat-number">1K+</span>
+                  <span class="hero__stat-label">agentes de talento enviando</span>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-lg" data-cta="producer-post">
+                Publicar un Trabajo
+              </button>
+
+              <p class="hero__trust">Confiado por creadores y profesionales del casting durante 65+ años</p>
+            </div>
+
+            <div class="hero__profiles">
+              <!-- Galería de perfiles -->
+              <div class="hero__profiles-grid">
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">F</div>
+                  <span class="hero__profile-name">Fabio Goutet</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">S</div>
+                  <span class="hero__profile-name">Sumit Chakravati</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">M</div>
+                  <span class="hero__profile-name">Merlin Stevens</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">J</div>
+                  <span class="hero__profile-name">Jordan Julien</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">C</div>
+                  <span class="hero__profile-name">Charles Doherty</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">C</div>
+                  <span class="hero__profile-name">Christina Adams</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">J</div>
+                  <span class="hero__profile-name">James Glyn</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">A</div>
+                  <span class="hero__profile-name">Anton Saunders</span>
+                </div>
+                <div class="hero__profile-card">
+                  <div class="placeholder-avatar">S</div>
+                  <span class="hero__profile-name">Stephen Riddle</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════
+         EMPRESAS QUE CONFÍAN EN NOSOTROS
+         ═══════════════════════════════════════════════════════════════════════════ -->
+    <section class="trusted-by">
+      <div class="container">
+        <h3 class="trusted-by__title">Estas empresas confían en nosotros</h3>
+        <div class="trusted-by__logos">
+          <div class="trusted-by__logo-item">
+            <!-- Logo Camera Market - reemplazar con imagen real -->
+            <div class="trusted-by__logo-placeholder">
+              <span>📷</span>
+              <span class="trusted-by__logo-text">Camera Market</span>
+            </div>
+          </div>
+          <div class="trusted-by__logo-item">
+            <!-- Logo Malva Pictures - reemplazar con imagen real -->
+            <div class="trusted-by__logo-placeholder">
+              <span>🎬</span>
+              <span class="trusted-by__logo-text">Malva Pictures</span>
+            </div>
+          </div>
+          <div class="trusted-by__logo-item">
+            <!-- Logo Influyentes Cantabria - reemplazar con imagen real -->
+            <div class="trusted-by__logo-placeholder">
+              <span>⭐</span>
+              <span class="trusted-by__logo-text">Influyentes Cantabria</span>
+            </div>
           </div>
         </div>
       </div>
