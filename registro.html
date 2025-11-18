@@ -302,7 +302,6 @@
           <div class="form-group">
             <label for="headshot">Headshot / Foto de perfil <span class="required">*</span></label>
             <input type="hidden"
-                   role="uploadcare-uploader"
                    id="headshot"
                    name="headshot"
                    data-public-key="795b6f11813228df93af"
@@ -317,7 +316,6 @@
           <div class="form-group">
             <label for="reel">Video Reel (opcional)</label>
             <input type="hidden"
-                   role="uploadcare-uploader"
                    id="reel"
                    name="reel"
                    data-public-key="795b6f11813228df93af"
@@ -382,6 +380,7 @@
   <script>
     UPLOADCARE_PUBLIC_KEY = '795b6f11813228df93af';
     UPLOADCARE_LOCALE = 'es';
+    UPLOADCARE_LIVE = false; // Evitar inicialización automática múltiple
   </script>
   <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
 
@@ -393,14 +392,37 @@
       const seccionTalento = document.getElementById('seccion-talento');
       const seccionProductor = document.getElementById('seccion-productor');
 
+      // Inicializar Uploadcare widgets solo una vez
+      let headshotWidget = null;
+      let reelWidget = null;
+
+      function initializeUploadcareWidgets() {
+        if (!headshotWidget) {
+          const headshotInput = document.getElementById('headshot');
+          if (headshotInput) {
+            headshotWidget = uploadcare.Widget(headshotInput);
+          }
+        }
+
+        if (!reelWidget) {
+          const reelInput = document.getElementById('reel');
+          if (reelInput) {
+            reelWidget = uploadcare.Widget(reelInput);
+          }
+        }
+      }
+
       function actualizarFormulario() {
         if (radioTalento.checked) {
           seccionTalento.classList.add('active');
           seccionProductor.classList.remove('active');
 
+          // Inicializar widgets solo cuando se muestra la sección
+          setTimeout(initializeUploadcareWidgets, 100);
+
           // Hacer campos de talento requeridos
           document.getElementById('ubicacion').required = true;
-          document.getElementById('headshot').required = true;
+          // No podemos hacer required un input hidden, validaremos en el submit
 
           // Quitar required de productor
           document.getElementById('empresa').required = false;
@@ -413,18 +435,25 @@
 
           // Quitar required de talento
           document.getElementById('ubicacion').required = false;
-          document.getElementById('headshot').required = false;
         }
       }
 
       radioTalento.addEventListener('change', actualizarFormulario);
       radioProductor.addEventListener('change', actualizarFormulario);
 
-      // Form submission (Netlify Forms maneja esto automáticamente)
+      // Form submission
       const form = document.getElementById('registro-form');
       form.addEventListener('submit', function(e) {
+        // Validar headshot si es talento
+        if (radioTalento.checked) {
+          const headshotValue = document.getElementById('headshot').value;
+          if (!headshotValue) {
+            e.preventDefault();
+            alert('Por favor, sube una foto de perfil (headshot)');
+            return false;
+          }
+        }
         console.log('Formulario enviado');
-        // Netlify Forms captura esto automáticamente
       });
     });
   </script>
