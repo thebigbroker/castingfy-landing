@@ -21,12 +21,12 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 :root {
   /* Colores */
-  --bg: #0b0b10;
-  --surface: #11131a;
-  --primary: #6dcff6;
-  --accent: #a78bfa;
-  --text: #e8eaf1;
-  --muted: #a0a6b0;
+  --bg: #ffffff;
+  --surface: #f8f7f4;
+  --primary: #1a1a1a;
+  --accent: #d4c5a9;
+  --text: #1a1a1a;
+  --muted: #666666;
   --ok: #22c55e;
   --warn: #f59e0b;
   --err: #ef4444;
