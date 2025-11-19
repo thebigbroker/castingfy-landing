@@ -935,11 +935,11 @@ ul {
 
 .trusted-by__logo-item {
   flex-shrink: 0;
-  width: 180px;
+  width: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: var(--space-lg);
+  padding: var(--space-xl);
   transition: opacity var(--transition-base);
 }
 
