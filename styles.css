@@ -911,27 +911,17 @@ ul {
   letter-spacing: 0.05em;
 }
 
-.trusted-by__logos-wrapper {
+.trusted-by__logos-track {
   overflow: hidden;
   position: relative;
   max-width: 100%;
   margin: 0 auto;
-}
-
-.trusted-by__logos {
   display: flex;
-  gap: var(--space-3xl);
-  align-items: center;
-  animation: scroll-logos 20s linear infinite;
-  width: max-content;
+  animation: scroll-logos 30s linear infinite;
 }
 
-.trusted-by__logos:hover {
+.trusted-by__logos-track:hover {
   animation-play-state: paused;
-}
-
-.trusted-by__logos--duplicate {
-  animation: none;
 }
 
 @keyframes scroll-logos {
@@ -945,16 +935,16 @@ ul {
 
 .trusted-by__logo-item {
   flex-shrink: 0;
-  width: 200px;
+  width: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: var(--space-lg);
-  transition: transform var(--transition-base);
+  transition: opacity var(--transition-base);
 }
 
 .trusted-by__logo-item:hover {
-  transform: scale(1.05);
+  opacity: 0.7;
 }
 
 .trusted-by__logo-placeholder {
