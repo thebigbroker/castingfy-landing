@@ -911,18 +911,41 @@ ul {
   letter-spacing: 0.05em;
 }
 
-.trusted-by__logos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-2xl);
-  align-items: center;
-  justify-items: center;
-  max-width: 900px;
+.trusted-by__logos-wrapper {
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
   margin: 0 auto;
 }
 
+.trusted-by__logos {
+  display: flex;
+  gap: var(--space-3xl);
+  align-items: center;
+  animation: scroll-logos 20s linear infinite;
+  width: max-content;
+}
+
+.trusted-by__logos:hover {
+  animation-play-state: paused;
+}
+
+.trusted-by__logos--duplicate {
+  animation: none;
+}
+
+@keyframes scroll-logos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .trusted-by__logo-item {
-  width: 100%;
+  flex-shrink: 0;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
