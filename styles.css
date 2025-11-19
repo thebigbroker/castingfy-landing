@@ -373,8 +373,45 @@ ul {
     background-color: #ffffff;
     border-bottom: 1px solid #e5e5e0;
     padding: var(--space-lg);
+    padding-bottom: 0;
     gap: var(--space-md);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+  }
+
+  /* Los links y botones en el menú móvil deben ocupar todo el ancho */
+  .navbar__menu.is-active .navbar__link {
+    width: 100%;
+    text-align: left;
+    padding: var(--space-sm) 0;
+    font-size: var(--text-base);
+    color: #1a1a1a;
+  }
+
+  /* Dropdowns en móvil */
+  .navbar__menu.is-active .navbar__dropdown-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    margin-top: var(--space-xs);
+    margin-left: var(--space-md);
+    box-shadow: none;
+    border: 1px solid #e5e5e0;
+  }
+
+  .navbar__menu.is-active .navbar__dropdown-menu::before {
+    display: none;
+  }
+
+  .navbar__menu.is-active .navbar__link--dropdown[aria-expanded="false"] + .navbar__dropdown-menu {
+    display: none;
+  }
+
+  .navbar__menu.is-active .navbar__link--dropdown[aria-expanded="true"] + .navbar__dropdown-menu {
+    display: block;
   }
 }
 
@@ -491,6 +528,42 @@ ul {
   align-items: center;
   gap: var(--space-md);
   flex-shrink: 0;
+}
+
+/* Actions clonadas en el menú móvil */
+.navbar__actions--mobile {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md) 0 var(--space-lg);
+  gap: var(--space-sm);
+  background-color: #f8f7f4;
+  border-top: 1px solid #e5e5e0;
+  margin: var(--space-md) calc(-1 * var(--space-lg)) 0;
+  padding-left: var(--space-lg);
+  padding-right: var(--space-lg);
+}
+
+.navbar__actions--mobile .btn {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.navbar__actions--mobile .navbar__link--action {
+  width: 100%;
+  text-align: center;
+  padding: var(--space-md);
+  font-size: var(--text-base);
+  font-weight: 600;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  transition: background-color var(--transition-fast);
+  text-decoration: none;
+  display: block;
+}
+
+.navbar__actions--mobile .navbar__link--action:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 @media (min-width: 1024px) {
