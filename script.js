@@ -461,6 +461,73 @@ function initSmoothScroll() {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
+   CARGAR TALENTOS REALES
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/**
+ * Carga los últimos talentos desde la API y los muestra en el hero
+ */
+async function loadRecentTalents() {
+  try {
+    const response = await fetch('https://app.castingfy.com/api/public/talents?limit=9');
+
+    if (!response.ok) {
+      console.error('Error al cargar talentos:', response.status);
+      return;
+    }
+
+    const data = await response.json();
+    const talents = data.talents || [];
+
+    if (talents.length === 0) {
+      console.log('No hay talentos disponibles');
+      return;
+    }
+
+    // Obtener el contenedor de perfiles
+    const profilesGrid = document.querySelector('.hero__profiles-grid');
+    if (!profilesGrid) return;
+
+    // Limpiar placeholders existentes
+    profilesGrid.innerHTML = '';
+
+    // Crear tarjetas de perfil con datos reales
+    talents.forEach(talent => {
+      const profileCard = document.createElement('div');
+      profileCard.className = 'hero__profile-card';
+
+      // Si tiene avatar, usar imagen; si no, usar placeholder con inicial
+      const initial = talent.name ? talent.name.charAt(0).toUpperCase() : '?';
+
+      if (talent.avatar) {
+        profileCard.innerHTML = `
+          <img
+            src="${talent.avatar}"
+            alt="${talent.name}"
+            class="hero__profile-avatar"
+            style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;"
+            loading="lazy"
+          />
+          <span class="hero__profile-name">${talent.name}</span>
+        `;
+      } else {
+        profileCard.innerHTML = `
+          <div class="placeholder-avatar">${initial}</div>
+          <span class="hero__profile-name">${talent.name}</span>
+        `;
+      }
+
+      profilesGrid.appendChild(profileCard);
+    });
+
+    console.log(`✅ ${talents.length} talentos cargados desde la API`);
+  } catch (error) {
+    console.error('Error cargando talentos:', error);
+    // Mantener los placeholders estáticos si falla la carga
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
    INICIALIZACIÓN
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -479,6 +546,9 @@ function init() {
   initAccordion();
   initTabs();
   initSmoothScroll();
+
+  // Cargar talentos reales desde la API
+  loadRecentTalents();
 
   // Debug: mostrar entradas guardadas en localStorage
   const savedEntries = getFromLocalStorage('castingfy_waitlist');
