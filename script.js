@@ -394,13 +394,32 @@ function initMobileMenu() {
 
   if (!mobileToggle || !navbarMenu) return;
 
-  // En móvil, clonar los botones de acción dentro del menú
-  if (navbarActions && window.innerWidth < 1024) {
-    const actionsClone = navbarActions.cloneNode(true);
-    actionsClone.classList.add('navbar__actions--mobile');
-    actionsClone.classList.remove('navbar__actions');
-    navbarMenu.appendChild(actionsClone);
+  // Función para clonar botones en móvil
+  function cloneActionsForMobile() {
+    // Verificar si ya existe un clon
+    const existingClone = navbarMenu.querySelector('.navbar__actions--mobile');
+
+    if (window.innerWidth < 1024) {
+      // Móvil: clonar si no existe
+      if (!existingClone && navbarActions) {
+        const actionsClone = navbarActions.cloneNode(true);
+        actionsClone.classList.add('navbar__actions--mobile');
+        actionsClone.classList.remove('navbar__actions');
+        navbarMenu.appendChild(actionsClone);
+      }
+    } else {
+      // Desktop: eliminar clon si existe
+      if (existingClone) {
+        existingClone.remove();
+      }
+    }
   }
+
+  // Clonar al iniciar
+  cloneActionsForMobile();
+
+  // Actualizar en resize
+  window.addEventListener('resize', cloneActionsForMobile);
 
   mobileToggle.addEventListener('click', () => {
     const isExpanded = mobileToggle.getAttribute('aria-expanded') === 'true';
@@ -411,14 +430,14 @@ function initMobileMenu() {
     navbarMenu.classList.toggle('is-active');
   });
 
-  // Cerrar menú al hacer click en un link
-  const navLinks = navbarMenu.querySelectorAll('.navbar__link, .btn');
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+  // Cerrar menú al hacer click en un link o botón (usar delegación de eventos)
+  navbarMenu.addEventListener('click', (e) => {
+    // Si se hizo click en un link o botón
+    if (e.target.matches('.navbar__link, .btn, .navbar__link *, .btn *')) {
       mobileToggle.classList.remove('is-active');
       navbarMenu.classList.remove('is-active');
       mobileToggle.setAttribute('aria-expanded', 'false');
-    });
+    }
   });
 }
 
