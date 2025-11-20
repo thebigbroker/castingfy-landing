@@ -484,66 +484,83 @@ function initSmoothScroll() {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /**
+ * Usuarios falsos para rellenar cuando no hay suficientes talentos reales
+ */
+const FAKE_TALENTS = [
+  { name: 'Ana Martínez', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&q=80' },
+  { name: 'Carlos López', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80' },
+  { name: 'Laura Sánchez', avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&q=80' },
+  { name: 'Miguel Torres', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&q=80' },
+  { name: 'Elena Ruiz', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&h=400&fit=crop&q=80' },
+  { name: 'David Ramírez', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&q=80' },
+  { name: 'Sofía Moreno', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=400&fit=crop&q=80' },
+  { name: 'Javier Díaz', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=400&fit=crop&q=80' },
+  { name: 'Carmen Vega', avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80' }
+];
+
+/**
  * Carga los últimos talentos desde la API y los muestra en el hero
  */
 async function loadRecentTalents() {
+  const profilesGrid = document.querySelector('.hero__profiles-grid');
+  if (!profilesGrid) return;
+
+  let talents = [];
+
   try {
     const response = await fetch('https://app.castingfy.com/api/public/talents?limit=9');
 
-    if (!response.ok) {
-      console.error('Error al cargar talentos:', response.status);
-      return;
+    if (response.ok) {
+      const data = await response.json();
+      talents = data.talents || [];
+      console.log(`✅ ${talents.length} talentos reales cargados desde la API`);
+    } else {
+      console.warn('No se pudieron cargar talentos desde la API, usando talentos falsos');
     }
-
-    const data = await response.json();
-    const talents = data.talents || [];
-
-    if (talents.length === 0) {
-      console.log('No hay talentos disponibles');
-      return;
-    }
-
-    // Obtener el contenedor de perfiles
-    const profilesGrid = document.querySelector('.hero__profiles-grid');
-    if (!profilesGrid) return;
-
-    // Limpiar placeholders existentes
-    profilesGrid.innerHTML = '';
-
-    // Crear tarjetas de perfil con datos reales
-    talents.forEach(talent => {
-      const profileCard = document.createElement('div');
-      profileCard.className = 'hero__profile-card';
-
-      // Si tiene avatar, usar imagen; si no, usar placeholder con inicial
-      const initial = talent.name ? talent.name.charAt(0).toUpperCase() : '?';
-
-      if (talent.avatar) {
-        profileCard.innerHTML = `
-          <img
-            src="${talent.avatar}"
-            alt="${talent.name}"
-            class="hero__profile-avatar"
-            style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;"
-            loading="lazy"
-          />
-          <span class="hero__profile-name">${talent.name}</span>
-        `;
-      } else {
-        profileCard.innerHTML = `
-          <div class="placeholder-avatar">${initial}</div>
-          <span class="hero__profile-name">${talent.name}</span>
-        `;
-      }
-
-      profilesGrid.appendChild(profileCard);
-    });
-
-    console.log(`✅ ${talents.length} talentos cargados desde la API`);
   } catch (error) {
-    console.error('Error cargando talentos:', error);
-    // Mantener los placeholders estáticos si falla la carga
+    console.warn('Error al cargar talentos desde la API:', error);
   }
+
+  // Si no hay suficientes talentos reales, rellenar con falsos
+  const neededTalents = 9 - talents.length;
+  if (neededTalents > 0) {
+    const fakeTalentsToAdd = FAKE_TALENTS.slice(0, neededTalents);
+    talents = [...talents, ...fakeTalentsToAdd];
+    console.log(`➕ Añadidos ${neededTalents} talentos falsos para completar 9`);
+  }
+
+  // Limpiar placeholders existentes
+  profilesGrid.innerHTML = '';
+
+  // Crear tarjetas de perfil
+  talents.forEach(talent => {
+    const profileCard = document.createElement('div');
+    profileCard.className = 'hero__profile-card';
+
+    const initial = talent.name ? talent.name.charAt(0).toUpperCase() : '?';
+
+    if (talent.avatar) {
+      profileCard.innerHTML = `
+        <img
+          src="${talent.avatar}"
+          alt="${talent.name}"
+          class="hero__profile-avatar"
+          style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover;"
+          loading="lazy"
+        />
+        <span class="hero__profile-name">${talent.name}</span>
+      `;
+    } else {
+      profileCard.innerHTML = `
+        <div class="placeholder-avatar">${initial}</div>
+        <span class="hero__profile-name">${talent.name}</span>
+      `;
+    }
+
+    profilesGrid.appendChild(profileCard);
+  });
+
+  console.log(`✅ Total de ${talents.length} perfiles mostrados en la landing`);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
