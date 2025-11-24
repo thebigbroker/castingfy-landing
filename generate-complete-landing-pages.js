@@ -1,12 +1,116 @@
-<!DOCTYPE html>
+const fs = require('fs');
+
+// Configuración de las páginas
+const pages = [
+  {
+    slug: 'voiceover-artists',
+    title: 'Voiceover Artists - Encuentra Trabajos de Doblaje',
+    heroTitle: 'Encuentra trabajos de voiceover y doblaje profesional',
+    heroSubtitle: 'Accede a miles de oportunidades de locución en España. Crea tu demo reel, conecta con productores y consigue trabajos en comerciales, audiolibros, animación y más.',
+    icon1: '🎙️', feature1Title: 'Demo Reel Profesional', feature1Desc: 'Sube múltiples reels personalizados: comerciales, audiolibros, animación, narrativa. Scripts de muestra incluidos para empezar.',
+    icon2: '🎬', feature2Title: 'Miles de Proyectos', feature2Desc: 'Accede a trabajos para películas, series TV, marcas reconocidas, agencias creativas y producciones comerciales.',
+    icon3: '🔍', feature3Title: 'Filtros Inteligentes', feature3Desc: 'Busca por tipo de producción, compensación, ubicación, rango de edad, y preferencia de grabación remota o presencial.',
+    icon4: '✅', feature4Title: 'Oportunidades Verificadas', feature4Desc: 'Todos los castings son revisados para garantizar información confiable y protegerte de estafas. Tu seguridad es prioridad.',
+    icon5: '📈', feature5Title: 'Desarrollo de Carrera', feature5Desc: 'Construye tu portafolio, networking con creadores, y acceso a base de datos de agencias de talento.',
+    icon6: '🌍', feature6Title: 'Trabajos Globales', feature6Desc: 'Castings para proyectos en todo el mundo. Trabaja remotamente desde casa o en estudios profesionales.',
+    testimonialText: '"En 6 meses conseguí trabajos para 3 audiolibros y varios comerciales. La plataforma es intuitiva, los castings son legítimos y el soporte es excelente."',
+    testimonialAuthor: 'Carlos Rodríguez',
+    testimonialRole: 'Actor de voz profesional, Barcelona',
+    testimonialInitials: 'CR'
+  },
+  {
+    slug: 'creativos-produccion',
+    title: 'Creativos & Production Crew - Trabajos en Producción',
+    heroTitle: 'Encuentra trabajos de crew y producción profesional',
+    heroSubtitle: 'Miles de oportunidades para directores, productores, técnicos y creativos en España. Conecta con proyectos de cine, TV, teatro y contenido digital.',
+    icon1: '🎬', feature1Title: 'Perfiles Especializados', feature1Desc: 'Crea perfiles para tu especialidad: dirección, fotografía, sonido, edición, diseño de producción y más.',
+    icon2: '📋', feature2Title: 'Proyectos Diversos', feature2Desc: 'Trabaja en largometrajes, series, comerciales, documentales, videoclips y producciones teatrales.',
+    icon3: '🤝', feature3Title: 'Networking Profesional', feature3Desc: 'Conecta con productoras, directores y otros profesionales del crew. Construye tu red de contactos.',
+    icon4: '💼', feature4Title: 'Portafolio Digital', feature4Desc: 'Muestra tu trabajo con videos, imágenes y créditos. Destaca tus proyectos más importantes.',
+    icon5: '🎯', feature5Title: 'Búsqueda Especializada', feature5Desc: 'Filtra por rol técnico, tipo de producción, presupuesto y ubicación. Encuentra el proyecto perfecto.',
+    icon6: '⭐', feature6Title: 'Reputación Profesional', feature6Desc: 'Construye tu reputación con reseñas y recomendaciones de productores y directores.',
+    testimonialText: '"Como director de fotografía, Castingfy me ha conectado con producciones increíbles. La calidad de los proyectos y la profesionalidad son excepcionales."',
+    testimonialAuthor: 'María González',
+    testimonialRole: 'Directora de Fotografía, Madrid',
+    testimonialInitials: 'MG'
+  },
+  {
+    slug: 'influencers-content-creators',
+    title: 'Influencers & Content Creators - Colaboraciones de Marca',
+    heroTitle: 'Encuentra colaboraciones y trabajos como influencer',
+    heroSubtitle: 'Conecta con marcas y agencias en España. Monetiza tu contenido, consigue colaboraciones pagadas y haz crecer tu audiencia con proyectos profesionales.',
+    icon1: '📱', feature1Title: 'Portafolio Social', feature1Desc: 'Muestra tu alcance, engagement y estilo de contenido. Estadísticas de Instagram, TikTok, YouTube y más.',
+    icon2: '💰', feature2Title: 'Colaboraciones Pagadas', feature2Desc: 'Accede a campañas de marcas reconocidas. Contenido patrocinado, embajadorías y colaboraciones a largo plazo.',
+    icon3: '🎯', feature3Title: 'Nichos Especializados', feature3Desc: 'Encuentra oportunidades en tu nicho: moda, fitness, tech, beauty, lifestyle, gaming, food y más.',
+    icon4: '📊', feature4Title: 'Analíticas y Métricas', feature4Desc: 'Comparte tus métricas de forma segura. Las marcas verán tu alcance real y engagement auténtico.',
+    icon5: '🤝', feature5Title: 'Relaciones Directas', feature5Desc: 'Comunícate directamente con marcas y agencias. Sin intermediarios, negociación transparente.',
+    icon6: '🌟', feature6Title: 'UGC y Contenido', feature6Desc: 'Oportunidades de User Generated Content. Crea contenido para marcas sin necesidad de publicarlo en tus redes.',
+    testimonialText: '"He conseguido 5 colaboraciones pagadas en 3 meses. Las marcas son serias y los pagos puntuales. Ideal para micro y macro influencers."',
+    testimonialAuthor: 'Laura Martín',
+    testimonialRole: 'Content Creator, Valencia',
+    testimonialInitials: 'LM'
+  },
+  {
+    slug: 'modelos',
+    title: 'Modelos - Encuentra Trabajos de Modelaje',
+    heroTitle: 'Encuentra trabajos de modelaje profesional',
+    heroSubtitle: 'Miles de castings para modelos en España. Desfiles, sesiones fotográficas, campañas publicitarias, editorial y más. Todas las tallas, edades y estilos.',
+    icon1: '📸', feature1Title: 'Book Profesional', feature1Desc: 'Crea tu book digital con fotos ilimitadas. Polaroids, composite cards, y portafolio completo.',
+    icon2: '👗', feature2Title: 'Diversidad de Trabajos', feature2Desc: 'Pasarela, editorial, comercial, catálogo, fitness, plus size, petite, senior. Todas las categorías.',
+    icon3: '📏', feature3Title: 'Medidas y Especificaciones', feature3Desc: 'Perfil detallado con medidas, tallas, color de ojos, cabello, habilidades especiales y experiencia.',
+    icon4: '🌍', feature4Title: 'Agencias y Clientes', feature4Desc: 'Conecta con agencias de modelaje, fotógrafos, diseñadores y marcas de moda reconocidas.',
+    icon5: '✨', feature5Title: 'Castings Verificados', feature5Desc: 'Todos los castings son revisados. Protección contra estafas y situaciones no profesionales.',
+    icon6: '💫', feature6Title: 'Desarrollo Profesional', feature6Desc: 'Construye tu carrera con cada trabajo. Portfolio growing, networking y exposure con clientes top.',
+    testimonialText: '"He trabajado en 2 campañas de moda y varias sesiones editorial. La plataforma es segura, profesional y las oportunidades son reales."',
+    testimonialAuthor: 'Ana Silva',
+    testimonialRole: 'Modelo profesional, Madrid',
+    testimonialInitials: 'AS'
+  },
+  {
+    slug: 'llamadas-casting',
+    title: 'Llamadas de Casting - Encuentra Audiciones Ahora',
+    heroTitle: 'Explora miles de llamadas de casting abiertas',
+    heroSubtitle: 'Las últimas oportunidades de casting en España. Cine, TV, teatro, comerciales, voiceover, modelaje y más. Actualizado diariamente.',
+    icon1: '🔔', feature1Title: 'Actualizaciones Diarias', feature1Desc: 'Nuevos castings publicados cada día. Alertas personalizadas para no perder ninguna oportunidad.',
+    icon2: '🎯', feature2Title: 'Filtros Avanzados', feature2Desc: 'Busca por categoría, ubicación, fecha, compensación, edad requerida y tipo de proyecto.',
+    icon3: '⚡', feature3Title: 'Aplicación Rápida', feature3Desc: 'Aplica en segundos con tu perfil guardado. Respuesta rápida de productores y directores de casting.',
+    icon4: '📱', feature4Title: 'Notificaciones Instantáneas', feature4Desc: 'Recibe notificaciones cuando hay nuevos castings que coinciden con tu perfil y preferencias.',
+    icon5: '🎬', feature5Title: 'Toda la Información', feature5Desc: 'Detalles completos: sinopsis, compensación, fechas de shooting, ubicación y requisitos específicos.',
+    icon6: '✅', feature6Title: 'Castings Legítimos', feature6Desc: 'Todos los castings son verificados. Productoras y proyectos reales, sin estafas ni spam.',
+    testimonialText: '"Reviso los castings todos los días. He encontrado proyectos increíbles que no hubiera conocido de otra forma. La plataforma es mi herramienta #1."',
+    testimonialAuthor: 'David Torres',
+    testimonialRole: 'Actor profesional, Sevilla',
+    testimonialInitials: 'DT'
+  },
+  {
+    slug: 'audiciones-populares',
+    title: 'Audiciones Populares - Los Castings Más Solicitados',
+    heroTitle: 'Audiciones más populares y demandadas',
+    heroSubtitle: 'Descubre los castings con más aplicaciones y mejor valorados. Proyectos destacados de productoras reconocidas y oportunidades premium.',
+    icon1: '⭐', feature1Title: 'Castings Destacados', feature1Desc: 'Los proyectos más populares de la semana. Grandes producciones, marcas reconocidas y presupuestos altos.',
+    icon2: '🏆', feature2Title: 'Proyectos Premium', feature2Desc: 'Acceso a castings de alto perfil: largometrajes, series para plataformas streaming, campañas internacionales.',
+    icon3: '📊', feature3Title: 'Tendencias del Sector', feature3Desc: 'Conoce qué tipo de talento se busca más. Adapta tu perfil a las demandas actuales del mercado.',
+    icon4: '🎯', feature4Title: 'Mejor Valorados', feature4Desc: 'Castings con mejor reputación y feedback de otros artistas. Productores profesionales y serios.',
+    icon5: '💼', feature5Title: 'Oportunidades de Carrera', feature5Desc: 'Proyectos que pueden impulsar tu carrera. Visibility, networking y créditos importantes.',
+    icon6: '🌟', feature6Title: 'Directorio Completo', feature6Desc: 'Explora por categoría: film, TV, teatro, comercial, voiceover, modelaje, production crew.',
+    testimonialText: '"Los castings destacados me han abierto puertas increíbles. Conseguí mi primer papel principal gracias a un proyecto destacado en la plataforma."',
+    testimonialAuthor: 'Patricia Ramos',
+    testimonialRole: 'Actriz profesional, Barcelona',
+    testimonialInitials: 'PR'
+  }
+];
+
+// Template HTML base
+function generateHTML(page) {
+  return `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Creativos & Production Crew - Trabajos en Producción | Castingfy</title>
-  <meta name="description" content="Miles de oportunidades para directores, productores, técnicos y creativos en España. Conecta con proyectos de cine, TV, teatro y contenido digital.">
+  <title>${page.title} | Castingfy</title>
+  <meta name="description" content="${page.heroSubtitle}">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://castingfy.com/creativos-produccion">
+  <link rel="canonical" href="https://castingfy.com/${page.slug}">
   <link rel="stylesheet" href="styles.css">
   <style>
     .landing-hero { background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); color: #ffffff; padding: 6rem 0 4rem; text-align: center; }
@@ -82,8 +186,8 @@
   <main>
     <section class="landing-hero">
       <div class="container">
-        <h1 class="landing-hero__title">Encuentra trabajos de crew y producción profesional</h1>
-        <p class="landing-hero__subtitle">Miles de oportunidades para directores, productores, técnicos y creativos en España. Conecta con proyectos de cine, TV, teatro y contenido digital.</p>
+        <h1 class="landing-hero__title">${page.heroTitle}</h1>
+        <p class="landing-hero__subtitle">${page.heroSubtitle}</p>
         <div class="landing-hero__cta">
           <a href="https://app.castingfy.com/register" class="btn btn-primary btn-lg">Crea tu perfil gratis</a>
           <a href="#como-funciona" class="btn btn-outline btn-lg">Cómo funciona</a>
@@ -102,12 +206,12 @@
         <h2 class="section-title">Todo lo que necesitas para tu carrera</h2>
         <p class="section-subtitle">Herramientas profesionales diseñadas para ti</p>
         <div class="features-grid">
-          <div class="feature-card"><div class="feature-icon">🎬</div><h3 class="feature-title">Perfiles Especializados</h3><p class="feature-desc">Crea perfiles para tu especialidad: dirección, fotografía, sonido, edición, diseño de producción y más.</p></div>
-          <div class="feature-card"><div class="feature-icon">📋</div><h3 class="feature-title">Proyectos Diversos</h3><p class="feature-desc">Trabaja en largometrajes, series, comerciales, documentales, videoclips y producciones teatrales.</p></div>
-          <div class="feature-card"><div class="feature-icon">🤝</div><h3 class="feature-title">Networking Profesional</h3><p class="feature-desc">Conecta con productoras, directores y otros profesionales del crew. Construye tu red de contactos.</p></div>
-          <div class="feature-card"><div class="feature-icon">💼</div><h3 class="feature-title">Portafolio Digital</h3><p class="feature-desc">Muestra tu trabajo con videos, imágenes y créditos. Destaca tus proyectos más importantes.</p></div>
-          <div class="feature-card"><div class="feature-icon">🎯</div><h3 class="feature-title">Búsqueda Especializada</h3><p class="feature-desc">Filtra por rol técnico, tipo de producción, presupuesto y ubicación. Encuentra el proyecto perfecto.</p></div>
-          <div class="feature-card"><div class="feature-icon">⭐</div><h3 class="feature-title">Reputación Profesional</h3><p class="feature-desc">Construye tu reputación con reseñas y recomendaciones de productores y directores.</p></div>
+          <div class="feature-card"><div class="feature-icon">${page.icon1}</div><h3 class="feature-title">${page.feature1Title}</h3><p class="feature-desc">${page.feature1Desc}</p></div>
+          <div class="feature-card"><div class="feature-icon">${page.icon2}</div><h3 class="feature-title">${page.feature2Title}</h3><p class="feature-desc">${page.feature2Desc}</p></div>
+          <div class="feature-card"><div class="feature-icon">${page.icon3}</div><h3 class="feature-title">${page.feature3Title}</h3><p class="feature-desc">${page.feature3Desc}</p></div>
+          <div class="feature-card"><div class="feature-icon">${page.icon4}</div><h3 class="feature-title">${page.feature4Title}</h3><p class="feature-desc">${page.feature4Desc}</p></div>
+          <div class="feature-card"><div class="feature-icon">${page.icon5}</div><h3 class="feature-title">${page.feature5Title}</h3><p class="feature-desc">${page.feature5Desc}</p></div>
+          <div class="feature-card"><div class="feature-icon">${page.icon6}</div><h3 class="feature-title">${page.feature6Title}</h3><p class="feature-desc">${page.feature6Desc}</p></div>
         </div>
       </div>
     </section>
@@ -131,12 +235,12 @@
       <div class="container">
         <h2 class="section-title">Lo que dicen nuestros profesionales</h2>
         <div class="testimonial-card">
-          <p class="testimonial-text">"Como director de fotografía, Castingfy me ha conectado con producciones increíbles. La calidad de los proyectos y la profesionalidad son excepcionales."</p>
+          <p class="testimonial-text">${page.testimonialText}</p>
           <div class="testimonial-author">
-            <div class="testimonial-avatar">MG</div>
+            <div class="testimonial-avatar">${page.testimonialInitials}</div>
             <div class="testimonial-info">
-              <h4>María González</h4>
-              <p>Directora de Fotografía, Madrid</p>
+              <h4>${page.testimonialAuthor}</h4>
+              <p>${page.testimonialRole}</p>
             </div>
           </div>
         </div>
@@ -213,4 +317,17 @@
     </div>
   </footer>
 </body>
-</html>
+</html>`;
+}
+
+// Generar todas las páginas
+console.log('🚀 Generando 6 landing pages completas...\n');
+
+pages.forEach(page => {
+  const filename = `${page.slug}.html`;
+  const html = generateHTML(page);
+  fs.writeFileSync(filename, html, 'utf8');
+  console.log(`✅ ${filename}`);
+});
+
+console.log(`\n✨ ${pages.length} landing pages creadas con diseño optimizado!`);
