@@ -102,12 +102,12 @@
    MODO OSCURO (PREMIUM)
    ═══════════════════════════════════════════════════════════════════════════ */
 body.dark-mode {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Secciones principales */
+/* ═══ SECCIONES PRINCIPALES ═══ */
 body.dark-mode .hero,
 body.dark-mode .navbar,
 body.dark-mode .agents-section,
@@ -118,22 +118,34 @@ body.dark-mode .benefits,
 body.dark-mode .how-it-works,
 body.dark-mode .pricing,
 body.dark-mode .faq,
-body.dark-mode .footer {
-  background-color: var(--dark-bg);
-  color: var(--dark-text);
+body.dark-mode .footer,
+body.dark-mode .audience-section,
+body.dark-mode .audience-section-alt,
+body.dark-mode .waitlist-cta {
+  background-color: var(--dark-bg) !important;
+  color: var(--dark-text) !important;
 }
 
-/* Contenedores y tarjetas */
+/* ═══ CONTENEDORES Y TARJETAS ═══ */
 body.dark-mode .hero__container,
 body.dark-mode .card,
 body.dark-mode .faq__item,
 body.dark-mode .pricing-card,
-body.dark-mode .benefit-card {
-  background-color: var(--dark-surface);
-  border-color: var(--dark-border);
+body.dark-mode .benefit-card,
+body.dark-mode .accordion-item,
+body.dark-mode .hero__switch {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
 }
 
-/* Todos los títulos y encabezados */
+/* ═══ TODOS LOS TEXTOS - ALTA PRIORIDAD ═══ */
+body.dark-mode,
+body.dark-mode *,
+body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+body.dark-mode h4, body.dark-mode h5, body.dark-mode h6,
+body.dark-mode p, body.dark-mode span, body.dark-mode li,
+body.dark-mode strong, body.dark-mode label,
+body.dark-mode a,
 body.dark-mode .hero__title,
 body.dark-mode .hero__subtitle,
 body.dark-mode .section__title,
@@ -145,104 +157,370 @@ body.dark-mode .hero__stat-label,
 body.dark-mode .hero__profile-name,
 body.dark-mode .pricing-card__name,
 body.dark-mode .benefit-card__title,
-body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
-body.dark-mode h4, body.dark-mode h5, body.dark-mode h6,
-body.dark-mode p, body.dark-mode span, body.dark-mode li,
-body.dark-mode strong, body.dark-mode label {
+body.dark-mode .benefit-card__text,
+body.dark-mode .accordion-trigger,
+body.dark-mode .accordion-content,
+body.dark-mode .step__title,
+body.dark-mode .step__text,
+body.dark-mode .audience-title,
+body.dark-mode .audience-label,
+body.dark-mode .feature-list__item strong,
+body.dark-mode .feature-list__item p,
+body.dark-mode .testimonial__text,
+body.dark-mode .testimonial__name,
+body.dark-mode .testimonial__role,
+body.dark-mode .footer__links-title,
+body.dark-mode .footer__tagline,
+body.dark-mode .footer__copyright,
+body.dark-mode .waitlist-cta__title,
+body.dark-mode .waitlist-cta__subtitle,
+body.dark-mode .agents-section__title,
+body.dark-mode .agents-section__subtitle,
+body.dark-mode .agents-step__title,
+body.dark-mode .agents-step__text {
   color: var(--dark-text) !important;
 }
 
-/* Textos con menor contraste */
+/* ═══ TEXTOS CON MENOR CONTRASTE (pero visibles) ═══ */
 body.dark-mode .hero__description,
 body.dark-mode .text-muted,
 body.dark-mode .hero__trust,
 body.dark-mode .pricing-card__description,
-body.dark-mode .benefit-card__description {
+body.dark-mode .pricing-card__features li,
+body.dark-mode .benefit-card__description,
+body.dark-mode .hero__stat-label,
+body.dark-mode .section-subtitle,
+body.dark-mode .footer__links-list a,
+body.dark-mode .waitlist-cta__disclaimer {
   color: var(--dark-muted) !important;
 }
 
-/* Botones */
-body.dark-mode .btn-primary {
-  background-color: var(--dark-primary);
-  color: var(--dark-bg);
-  border-color: var(--dark-primary);
+/* ═══ TEXTOS ROTATORIOS Y TÍTULOS CON GRADIENTE ═══ */
+/* Estos usan background-clip: text, hay que cambiar el background */
+body.dark-mode .hero__rotating-text,
+body.dark-mode .section-title,
+body.dark-mode .hero__stat-number,
+body.dark-mode .pricing-card__amount,
+body.dark-mode .waitlist-cta__title,
+body.dark-mode .agents-section__title,
+body.dark-mode .footer__logo {
+  background: var(--dark-accent) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
 }
 
-body.dark-mode .btn-outline {
-  border-color: var(--dark-border);
-  color: var(--dark-text);
-}
-
-body.dark-mode .btn-outline:hover {
-  background-color: var(--dark-surface);
-}
-
-/* Botones del switch hero */
-body.dark-mode .hero__switch-btn {
-  color: var(--dark-muted);
-  background-color: transparent;
-}
-
-body.dark-mode .hero__switch-btn--active {
-  background-color: var(--dark-primary);
-  color: var(--dark-bg);
-}
-
-/* Navbar */
+/* ═══ NAVBAR ═══ */
 body.dark-mode .navbar {
-  background-color: var(--dark-bg);
-  border-bottom-color: var(--dark-border);
+  background-color: var(--dark-bg) !important;
+  border-bottom-color: var(--dark-border) !important;
 }
 
 body.dark-mode .navbar__link {
-  color: var(--dark-text);
+  color: var(--dark-text) !important;
 }
 
 body.dark-mode .navbar__link:hover {
-  color: var(--dark-accent);
+  color: var(--dark-accent) !important;
 }
 
-/* Perfiles */
+body.dark-mode .navbar__logo-text {
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .navbar__hamburger,
+body.dark-mode .navbar__hamburger::before,
+body.dark-mode .navbar__hamburger::after {
+  background-color: var(--dark-text) !important;
+}
+
+body.dark-mode .navbar__menu.is-active {
+  background-color: var(--dark-bg) !important;
+  border-bottom-color: var(--dark-border) !important;
+}
+
+body.dark-mode .navbar__dropdown-menu {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .navbar__dropdown-menu::before {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .navbar__dropdown-item {
+  color: var(--dark-muted) !important;
+}
+
+body.dark-mode .navbar__dropdown-item:hover {
+  background-color: var(--dark-surface) !important;
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .navbar__actions--mobile {
+  background-color: var(--dark-surface) !important;
+  border-top-color: var(--dark-border) !important;
+}
+
+/* ═══ BOTONES ═══ */
+body.dark-mode .btn-primary {
+  background-color: var(--dark-primary) !important;
+  color: var(--dark-bg) !important;
+  border-color: var(--dark-primary) !important;
+}
+
+body.dark-mode .btn-primary:hover {
+  color: var(--dark-bg) !important;
+}
+
+body.dark-mode .btn-outline {
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .btn-outline:hover {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-text) !important;
+}
+
+/* ═══ HERO SWITCH ═══ */
+body.dark-mode .hero__switch {
+  background-color: var(--dark-surface) !important;
+}
+
+body.dark-mode .hero__switch-btn {
+  color: var(--dark-muted) !important;
+  background-color: transparent !important;
+}
+
+body.dark-mode .hero__switch-btn:hover {
+  color: var(--dark-text) !important;
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+body.dark-mode .hero__switch-btn--active {
+  background-color: var(--dark-primary) !important;
+  color: var(--dark-bg) !important;
+}
+
+/* ═══ PERFILES ═══ */
 body.dark-mode .hero__profile-card {
-  background-color: var(--dark-surface);
-  border-color: var(--dark-border);
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .hero__profile-card:hover {
+  border-color: var(--dark-accent) !important;
 }
 
 body.dark-mode .hero__profiles-grid {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
-/* Estadísticas */
-body.dark-mode .hero__stat-number {
-  color: var(--dark-accent);
+body.dark-mode .placeholder-avatar {
+  background: var(--dark-accent) !important;
+  color: var(--dark-bg) !important;
 }
 
-/* Formularios */
+/* ═══ FORMULARIOS ═══ */
 body.dark-mode input,
 body.dark-mode textarea,
-body.dark-mode select {
-  background-color: var(--dark-surface);
-  border-color: var(--dark-border);
-  color: var(--dark-text);
+body.dark-mode select,
+body.dark-mode .form-input,
+body.dark-mode .form-select {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-text) !important;
 }
 
 body.dark-mode input::placeholder,
-body.dark-mode textarea::placeholder {
-  color: var(--dark-muted);
+body.dark-mode textarea::placeholder,
+body.dark-mode .form-input::placeholder {
+  color: var(--dark-muted) !important;
 }
 
-/* Footer */
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus,
+body.dark-mode .form-input:focus,
+body.dark-mode .form-select:focus {
+  border-color: var(--dark-accent) !important;
+  box-shadow: 0 0 0 3px rgba(212, 197, 169, 0.2) !important;
+}
+
+/* ═══ ACORDEÓN / FAQs ═══ */
+body.dark-mode .accordion-item {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .accordion-item:hover {
+  border-color: var(--dark-accent) !important;
+}
+
+body.dark-mode .accordion-trigger {
+  color: var(--dark-text) !important;
+  background: none !important;
+}
+
+body.dark-mode .accordion-trigger:hover {
+  color: var(--dark-accent) !important;
+}
+
+body.dark-mode .accordion-content {
+  color: var(--dark-muted) !important;
+}
+
+body.dark-mode .accordion-icon {
+  color: var(--dark-accent) !important;
+}
+
+/* ═══ PRICING / PRECIOS ═══ */
+body.dark-mode .pricing {
+  background-color: var(--dark-bg) !important;
+}
+
+body.dark-mode .pricing-card {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .pricing-card-featured {
+  border-color: var(--dark-accent) !important;
+}
+
+body.dark-mode .pricing-card__badge {
+  background: var(--dark-accent) !important;
+  color: var(--dark-bg) !important;
+}
+
+body.dark-mode .pricing-card__period {
+  color: var(--dark-muted) !important;
+}
+
+/* ═══ STEPS / PASOS ═══ */
+body.dark-mode .step__number,
+body.dark-mode .agents-step__number {
+  background: var(--dark-accent) !important;
+  color: var(--dark-bg) !important;
+}
+
+/* ═══ CARDS / TARJETAS ═══ */
+body.dark-mode .card {
+  background-color: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+}
+
+body.dark-mode .card:hover {
+  border-color: var(--dark-accent) !important;
+}
+
+/* ═══ FOOTER ═══ */
 body.dark-mode .footer {
-  border-top-color: var(--dark-border);
-  background-color: var(--dark-surface);
+  border-top-color: var(--dark-border) !important;
+  background-color: var(--dark-surface) !important;
 }
 
-body.dark-mode .footer__link {
-  color: var(--dark-text);
+body.dark-mode .footer__links-list a {
+  color: var(--dark-muted) !important;
 }
 
-body.dark-mode .footer__link:hover {
-  color: var(--dark-accent);
+body.dark-mode .footer__links-list a:hover {
+  color: var(--dark-accent) !important;
+}
+
+body.dark-mode .footer__social-link {
+  background-color: rgba(212, 197, 169, 0.1) !important;
+  color: var(--dark-accent) !important;
+}
+
+body.dark-mode .footer__social-link:hover {
+  background-color: var(--dark-accent) !important;
+  color: var(--dark-bg) !important;
+}
+
+body.dark-mode .footer__bottom {
+  border-top-color: var(--dark-border) !important;
+}
+
+body.dark-mode .footer__contact-link {
+  color: var(--dark-accent) !important;
+}
+
+body.dark-mode .footer__contact-text {
+  color: var(--dark-muted) !important;
+}
+
+/* ═══ AUDIENCE SECTIONS ═══ */
+body.dark-mode .audience-section {
+  background-color: var(--dark-surface) !important;
+}
+
+body.dark-mode .audience-section-alt {
+  background-color: var(--dark-bg) !important;
+}
+
+/* ═══ AGENTS SECTION ═══ */
+body.dark-mode .agents-section {
+  background: var(--dark-surface) !important;
+}
+
+body.dark-mode .agents-section__label {
+  color: var(--dark-accent) !important;
+}
+
+/* ═══ TESTIMONIALS ═══ */
+body.dark-mode .testimonial__avatar {
+  border-color: var(--dark-border) !important;
+}
+
+/* ═══ BADGES ═══ */
+body.dark-mode .badge-soon {
+  background-color: rgba(212, 197, 169, 0.15) !important;
+  color: var(--dark-accent) !important;
+  border-color: rgba(212, 197, 169, 0.3) !important;
+}
+
+/* ═══ TABS ═══ */
+body.dark-mode .tabs {
+  border-bottom-color: var(--dark-border) !important;
+}
+
+body.dark-mode .tab {
+  color: var(--dark-muted) !important;
+}
+
+body.dark-mode .tab:hover {
+  color: var(--dark-text) !important;
+}
+
+body.dark-mode .tab-active {
+  color: var(--dark-accent) !important;
+}
+
+body.dark-mode .tab-active::after {
+  background: var(--dark-accent) !important;
+}
+
+/* ═══ PLACEHOLDERS ═══ */
+body.dark-mode .placeholder,
+body.dark-mode .placeholder-logo,
+body.dark-mode .trusted-by__logo-placeholder {
+  background: var(--dark-surface) !important;
+  border-color: var(--dark-border) !important;
+  color: var(--dark-muted) !important;
+}
+
+body.dark-mode .trusted-by__logo-text {
+  color: var(--dark-muted) !important;
+}
+
+/* ═══ TOAST ═══ */
+body.dark-mode .toast {
+  background-color: var(--dark-surface) !important;
+  color: var(--dark-text) !important;
+  border-color: var(--dark-accent) !important;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
