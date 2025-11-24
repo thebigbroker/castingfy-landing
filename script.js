@@ -276,6 +276,15 @@ function initHeroSwitch() {
       });
       button.classList.add('hero__switch-btn--active');
 
+      // Activar modo oscuro premium cuando se selecciona "Busco Talentos" (producer)
+      if (targetView === 'producer') {
+        document.body.classList.add('dark-mode');
+        console.log('🌙 Modo oscuro premium activado');
+      } else {
+        document.body.classList.remove('dark-mode');
+        console.log('☀️ Modo claro activado');
+      }
+
       // Actualizar vistas
       views.forEach(view => {
         const viewType = view.getAttribute('data-view-content');
