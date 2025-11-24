@@ -107,42 +107,65 @@ body.dark-mode {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+/* Secciones principales */
 body.dark-mode .hero,
 body.dark-mode .navbar,
 body.dark-mode .agents-section,
 body.dark-mode .features-section,
 body.dark-mode .waitlist-section,
 body.dark-mode .faq-section,
+body.dark-mode .benefits,
+body.dark-mode .how-it-works,
+body.dark-mode .pricing,
+body.dark-mode .faq,
 body.dark-mode .footer {
   background-color: var(--dark-bg);
   color: var(--dark-text);
 }
 
+/* Contenedores y tarjetas */
 body.dark-mode .hero__container,
 body.dark-mode .card,
-body.dark-mode .faq__item {
+body.dark-mode .faq__item,
+body.dark-mode .pricing-card,
+body.dark-mode .benefit-card {
   background-color: var(--dark-surface);
   border-color: var(--dark-border);
 }
 
+/* Todos los títulos y encabezados */
 body.dark-mode .hero__title,
 body.dark-mode .hero__subtitle,
 body.dark-mode .section__title,
 body.dark-mode .section__subtitle,
+body.dark-mode .section-title,
+body.dark-mode .navbar__brand,
+body.dark-mode .navbar__link,
+body.dark-mode .hero__stat-label,
+body.dark-mode .hero__profile-name,
+body.dark-mode .pricing-card__name,
+body.dark-mode .benefit-card__title,
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
-body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
-  color: var(--dark-text);
+body.dark-mode h4, body.dark-mode h5, body.dark-mode h6,
+body.dark-mode p, body.dark-mode span, body.dark-mode li,
+body.dark-mode strong, body.dark-mode label {
+  color: var(--dark-text) !important;
 }
 
+/* Textos con menor contraste */
 body.dark-mode .hero__description,
 body.dark-mode .text-muted,
-body.dark-mode .hero__trust {
-  color: var(--dark-muted);
+body.dark-mode .hero__trust,
+body.dark-mode .pricing-card__description,
+body.dark-mode .benefit-card__description {
+  color: var(--dark-muted) !important;
 }
 
+/* Botones */
 body.dark-mode .btn-primary {
   background-color: var(--dark-primary);
   color: var(--dark-bg);
+  border-color: var(--dark-primary);
 }
 
 body.dark-mode .btn-outline {
@@ -154,19 +177,47 @@ body.dark-mode .btn-outline:hover {
   background-color: var(--dark-surface);
 }
 
+/* Botones del switch hero */
+body.dark-mode .hero__switch-btn {
+  color: var(--dark-muted);
+  background-color: transparent;
+}
+
+body.dark-mode .hero__switch-btn--active {
+  background-color: var(--dark-primary);
+  color: var(--dark-bg);
+}
+
+/* Navbar */
 body.dark-mode .navbar {
+  background-color: var(--dark-bg);
   border-bottom-color: var(--dark-border);
 }
 
+body.dark-mode .navbar__link {
+  color: var(--dark-text);
+}
+
+body.dark-mode .navbar__link:hover {
+  color: var(--dark-accent);
+}
+
+/* Perfiles */
 body.dark-mode .hero__profile-card {
   background-color: var(--dark-surface);
   border-color: var(--dark-border);
 }
 
+body.dark-mode .hero__profiles-grid {
+  background-color: transparent;
+}
+
+/* Estadísticas */
 body.dark-mode .hero__stat-number {
   color: var(--dark-accent);
 }
 
+/* Formularios */
 body.dark-mode input,
 body.dark-mode textarea,
 body.dark-mode select {
@@ -175,8 +226,23 @@ body.dark-mode select {
   color: var(--dark-text);
 }
 
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+  color: var(--dark-muted);
+}
+
+/* Footer */
 body.dark-mode .footer {
   border-top-color: var(--dark-border);
+  background-color: var(--dark-surface);
+}
+
+body.dark-mode .footer__link {
+  color: var(--dark-text);
+}
+
+body.dark-mode .footer__link:hover {
+  color: var(--dark-accent);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1245,9 +1311,12 @@ ul {
 /* ═══════════════════════════════════════════════════════════════════════════
    SECCIONES GENERALES
    ═══════════════════════════════════════════════════════════════════════════ */
+.social-proof {
+  display: none; /* Oculta la sección "Confiado por la industria" */
+}
+
 .benefits,
 .how-it-works,
-.social-proof,
 .pricing,
 .faq {
   padding: var(--space-4xl) 0;
