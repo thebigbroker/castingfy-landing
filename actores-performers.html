@@ -3,79 +3,618 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=https://castingfy.com">
-  <title>Actors & Performers - Castingfy</title>
-  <meta name="description" content="Encuentra oportunidades de casting para actores y performers profesionales. Únete a Castingfy.">
+  <title>Actores & Performers - Encuentra Tu Próximo Papel | Castingfy</title>
+  <meta name="description" content="Accede a miles de castings y audiciones para actores y performers en España. Crea tu perfil gratis y conecta con directores de casting profesionales.">
+  <meta name="keywords" content="actores, performers, castings, audiciones, actores españa, casting actores, oportunidades acting">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://castingfy.com/actores-performers">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Actors & Performers - Castingfy">
-  <meta property="og:description" content="Encuentra oportunidades de casting para actores y performers profesionales.">
+  <meta property="og:title" content="Actores & Performers - Encuentra Tu Próximo Papel | Castingfy">
+  <meta property="og:description" content="Accede a miles de castings y audiciones para actores y performers en España.">
   <meta property="og:url" content="https://castingfy.com/actores-performers">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://castingfy.com/og-image.jpg">
 
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Estilos específicos para esta página */
+    .landing-hero {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+      color: #ffffff;
+      padding: 6rem 0 4rem;
+      text-align: center;
+    }
+
+    .landing-hero__title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    .landing-hero__subtitle {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      color: #cccccc;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .landing-hero__cta {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #d4c5a9;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: #999999;
+      margin-top: 0.5rem;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: #f8f7f4;
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #1a1a1a;
+    }
+
+    .feature-desc {
+      color: #666666;
+      line-height: 1.6;
+    }
+
+    .how-it-works {
+      background: #f8f7f4;
+      padding: 4rem 0;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .step-card {
+      text-align: center;
+      position: relative;
+    }
+
+    .step-number {
+      width: 64px;
+      height: 64px;
+      background: #1a1a1a;
+      color: #ffffff;
+      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
-      margin: 0;
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0 auto 1.5rem;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #1a1a1a;
+    }
+
+    .step-desc {
+      color: #666666;
+      line-height: 1.6;
+    }
+
+    .testimonial-section {
+      padding: 4rem 0;
+      background: #ffffff;
+    }
+
+    .testimonial-card {
+      background: #f8f7f4;
+      padding: 3rem;
+      border-radius: 1rem;
+      max-width: 800px;
+      margin: 2rem auto;
+    }
+
+    .testimonial-text {
+      font-size: 1.25rem;
+      font-style: italic;
+      color: #1a1a1a;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #1a1a1a;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .testimonial-info h4 {
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-info p {
+      color: #666666;
+      font-size: 0.875rem;
+    }
+
+    .cta-section {
       background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
       color: #ffffff;
+      padding: 4rem 0;
       text-align: center;
-      padding: 2rem;
     }
-    .container {
-      max-width: 600px;
-    }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
+
+    .cta-title {
+      font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 800;
+      margin-bottom: 1rem;
     }
-    p {
+
+    .cta-subtitle {
       font-size: 1.25rem;
       color: #cccccc;
       margin-bottom: 2rem;
     }
-    .loader {
-      width: 48px;
-      height: 48px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top-color: #ffffff;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 2rem;
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
+
+    .resource-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e0;
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
     }
-    a {
+
+    .resource-card:hover {
+      border-color: #1a1a1a;
+    }
+
+    .resource-title {
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-link {
       color: #d4c5a9;
+      font-size: 0.875rem;
       text-decoration: none;
       font-weight: 600;
     }
-    a:hover {
+
+    .resource-link:hover {
       text-decoration: underline;
     }
   </style>
-
-  <script>
-    // Fallback redirection if meta refresh doesn't work
-    setTimeout(function() {
-      window.location.href = 'https://castingfy.com';
-    }, 100);
-  </script>
 </head>
 <body>
-  <div class="container">
-    <div class="loader"></div>
-    <h1>Actors & Performers</h1>
-    <p>Redirigiendo a Castingfy...</p>
-    <p><a href="https://castingfy.com">Haz clic aquí si no eres redirigido automáticamente</a></p>
-  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation">
+    <div class="container navbar__container">
+      <a href="/" class="navbar__logo">
+        <span class="navbar__logo-text">CASTINGFY</span>
+      </a>
+      <div class="navbar__actions">
+        <a href="https://app.castingfy.com/login" class="navbar__link navbar__link--action">Iniciar sesión</a>
+        <a href="https://app.castingfy.com/register" class="btn btn-primary btn-sm">Registrarse gratis</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="landing-hero">
+      <div class="container">
+        <h1 class="landing-hero__title">Encuentra tu próximo papel como actor o performer</h1>
+        <p class="landing-hero__subtitle">
+          Accede a miles de castings profesionales en España. Conecta con directores de casting, crea tu perfil profesional y consigue el trabajo de tus sueños.
+        </p>
+
+        <div class="landing-hero__cta">
+          <a href="https://app.castingfy.com/register" class="btn btn-primary btn-lg">
+            Crea tu perfil gratis
+          </a>
+          <a href="#como-funciona" class="btn btn-outline btn-lg">
+            Cómo funciona
+          </a>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">65+</div>
+            <div class="stat-label">Años de confianza en la industria</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1M+</div>
+            <div class="stat-label">Talentos registrados</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100K+</div>
+            <div class="stat-label">Castings publicados</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1K+</div>
+            <div class="stat-label">Agentes activos</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section style="padding: 4rem 0;">
+      <div class="container">
+        <h2 class="section-title">Todo lo que necesitas para impulsar tu carrera</h2>
+        <p class="section-subtitle">
+          Herramientas profesionales diseñadas específicamente para actores y performers
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🎭</div>
+            <h3 class="feature-title">Perfil de Talento Completo</h3>
+            <p class="feature-desc">
+              Crea un perfil profesional con fotos ilimitadas, videos, showreel y toda tu experiencia. Los directores de casting podrán descubrirte fácilmente.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📢</div>
+            <h3 class="feature-title">Castings Ilimitados</h3>
+            <p class="feature-desc">
+              Aplica a todos los castings que quieras sin límites. Accede a audiciones para cine, TV, teatro, comerciales y más.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">💬</div>
+            <h3 class="feature-title">Mensajería Directa</h3>
+            <p class="feature-desc">
+              Comunícate directamente con directores de casting cuando apliques a roles. Sin intermediarios, sin complicaciones.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3 class="feature-title">Perfil Visible</h3>
+            <p class="feature-desc">
+              Los directores de casting pueden encontrarte e invitarte a audiciones directamente. Aumenta tus oportunidades exponencialmente.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">✅</div>
+            <h3 class="feature-title">Castings Verificados</h3>
+            <p class="feature-desc">
+              Cada casting es revisado cuidadosamente para garantizar legitimidad, seguridad y calidad. Tu tranquilidad es nuestra prioridad.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3 class="feature-title">Recursos y Formación</h3>
+            <p class="feature-desc">
+              Accede a guías, consejos de expertos, clases online y artículos de profesionales de la industria para mejorar continuamente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="como-funciona" class="how-it-works">
+      <div class="container">
+        <h2 class="section-title">Cómo funciona</h2>
+        <p class="section-subtitle">
+          Comienza tu carrera en 3 simples pasos
+        </p>
+
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Crea tu perfil</h3>
+            <p class="step-desc">
+              Regístrate gratis y crea tu perfil profesional. Añade fotos, videos, tu experiencia y habilidades especiales.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Explora castings</h3>
+            <p class="step-desc">
+              Navega por miles de oportunidades de casting. Filtra por tipo de proyecto, ubicación, rango de edad y más.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Aplica y destaca</h3>
+            <p class="step-desc">
+              Envía tu aplicación y comunícate directamente con los directores de casting. ¡Consigue tu próximo papel!
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+          <a href="https://app.castingfy.com/register" class="btn btn-primary btn-lg">
+            Comienza ahora - Es gratis
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="testimonial-section">
+      <div class="container">
+        <h2 class="section-title">Lo que dicen nuestros actores</h2>
+
+        <div class="testimonial-card">
+          <p class="testimonial-text">
+            "Castingfy ha transformado mi carrera. En solo 3 meses conseguí audiciones para 2 películas y un comercial. La plataforma es fácil de usar y los castings son legítimos. ¡Totalmente recomendado!"
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AM</div>
+            <div class="testimonial-info">
+              <h4>Andrea Martínez</h4>
+              <p>Actriz profesional, Madrid</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section style="padding: 4rem 0; background: #f8f7f4;">
+      <div class="container">
+        <h2 class="section-title">Recursos para actores</h2>
+        <p class="section-subtitle">
+          Aprende, mejora y destaca con nuestros recursos gratuitos
+        </p>
+
+        <div class="resources-grid">
+          <div class="resource-card">
+            <h3 class="resource-title">📖 Guía completa de audiciones</h3>
+            <a href="/consejos-guias" class="resource-link">Leer más →</a>
+          </div>
+
+          <div class="resource-card">
+            <h3 class="resource-title">🎬 Cómo crear tu showreel perfecto</h3>
+            <a href="/consejos-guias" class="resource-link">Leer más →</a>
+          </div>
+
+          <div class="resource-card">
+            <h3 class="resource-title">💡 Errores comunes en castings</h3>
+            <a href="/consejos-guias" class="resource-link">Leer más →</a>
+          </div>
+
+          <div class="resource-card">
+            <h3 class="resource-title">🎭 Técnicas de interpretación</h3>
+            <a href="/clases-online" class="resource-link">Ver clases →</a>
+          </div>
+
+          <div class="resource-card">
+            <h3 class="resource-title">📸 Guía de fotos profesionales</h3>
+            <a href="/consejos-guias" class="resource-link">Leer más →</a>
+          </div>
+
+          <div class="resource-card">
+            <h3 class="resource-title">🎤 El monólogo perfecto</h3>
+            <a href="/monologo" class="resource-link">Explorar →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 class="cta-title">¿Listo para comenzar tu carrera?</h2>
+        <p class="cta-subtitle">
+          Únete a miles de actores y performers que ya están construyendo su futuro con Castingfy
+        </p>
+        <a href="https://app.castingfy.com/register" class="btn btn-primary btn-lg" style="background: #ffffff; color: #1a1a1a;">
+          Crea tu perfil gratis ahora
+        </a>
+        <p style="margin-top: 1rem; color: #cccccc; font-size: 0.875rem;">
+          No se requiere tarjeta de crédito • Perfil profesional ilimitado • Acceso instantáneo
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+
+        <!-- ARTISTAS -->
+        <div class="footer__links">
+          <h3 class="footer__links-title">ARTISTAS</h3>
+          <ul class="footer__links-list">
+            <li><a href="/actores-performers">Actors & Performers</a></li>
+            <li><a href="/voiceover-artists">Voiceover Artists</a></li>
+            <li><a href="/creativos-produccion">Creatives & Production Crew</a></li>
+            <li><a href="/influencers-content-creators">Influencers + Content Creators</a></li>
+            <li><a href="/modelos">Models</a></li>
+            <li><a href="/llamadas-casting">Llamadas de casting</a></li>
+            <li><a href="/audiciones-populares">Audiciones populares</a></li>
+            <li><a href="/como-funciona-talento">Cómo funciona</a></li>
+            <li><a href="/consejos-guias">Consejos y guías</a></li>
+            <li><a href="/backstage-ninos">Backstage Niños</a></li>
+            <li><a href="/comunidad">Comunidad</a></li>
+            <li><a href="/monologo">El monólogo</a></li>
+            <li><a href="/clases-online">Clases en línea</a></li>
+            <li><a href="https://app.castingfy.com/register" style="font-weight: 600;">Crea tu perfil de talento gratis</a></li>
+          </ul>
+        </div>
+
+        <!-- CREADORES -->
+        <div class="footer__links">
+          <h3 class="footer__links-title">CREADORES</h3>
+          <ul class="footer__links-list">
+            <li><a href="/film-video-tv-production">Film, Video & TV Production</a></li>
+            <li><a href="/teatro-artes-escenicas">Theater & Performing Arts</a></li>
+            <li><a href="/voiceover-production">Voiceover Production</a></li>
+            <li><a href="/comercial-branded-content">Commercial + Branded Content</a></li>
+            <li><a href="/influencers-ugc">Influencers + UGC</a></li>
+            <li><a href="/empresas-ongs">Companies & NGOs</a></li>
+            <li><a href="/talent-database-directory">Talent Database Directory</a></li>
+            <li><a href="/base-datos-talentos">Base de datos de talentos</a></li>
+            <li><a href="/pay-talent">Pay Talent</a></li>
+            <li><a href="/como-funciona-creadores">Cómo funciona</a></li>
+            <li><a href="/consejos-creadores">Consejos para creadores</a></li>
+            <li><a href="https://app.castingfy.com/register" style="font-weight: 600;">Publica un trabajo</a></li>
+          </ul>
+        </div>
+
+        <!-- EMPRESA -->
+        <div class="footer__links">
+          <h3 class="footer__links-title">EMPRESA</h3>
+          <ul class="footer__links-list">
+            <li><a href="/acerca-de">Acerca de</a></li>
+            <li><a href="/carreras">Carreras</a></li>
+            <li><a href="/asociados">Asociados</a></li>
+            <li><a href="/articulos-tema">Artículos por tema</a></li>
+            <li><a href="/articulos-archivo">Articles Archive</a></li>
+            <li><a href="/suscripciones-empresas">Suscripciones para negocios y escuelas</a></li>
+          </ul>
+        </div>
+
+        <!-- CONECTA -->
+        <div class="footer__connect">
+          <h3 class="footer__links-title">CONECTA</h3>
+          <div class="footer__social" style="margin-bottom: 1.5rem;">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Facebook">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+            </a>
+            <a href="https://twitter.com/castingfy" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Twitter">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+              </svg>
+            </a>
+            <a href="https://instagram.com/castingfy" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="Instagram">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/>
+              </svg>
+            </a>
+          </div>
+
+          <h4 class="footer__newsletter-title">Suscríbete al boletín</h4>
+          <form class="footer__newsletter-form" id="newsletter-form">
+            <input
+              type="email"
+              placeholder="Tu correo electrónico"
+              class="footer__newsletter-input"
+              required
+              aria-label="Email para newsletter"
+            />
+            <button type="submit" class="footer__newsletter-btn">
+              Enviar
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="footer__bottom">
+        <div class="footer__bottom-content">
+          <div class="footer__legal">
+            <span>© 2025 Castingfy. Todos los derechos reservados</span>
+            <span class="footer__separator">•</span>
+            <a href="/terminos">Términos de uso</a>
+            <span class="footer__separator">•</span>
+            <a href="/privacidad">Política de privacidad</a>
+          </div>
+          <div class="footer__tagline">
+            <p>
+              <span style="font-weight: 600;">🎬 Castingfy</span>
+              <br />
+              La plataforma de casting más confiable.
+              <br />
+              Hecho con ❤️ desde España.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
