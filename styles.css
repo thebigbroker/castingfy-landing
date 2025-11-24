@@ -127,7 +127,7 @@ body.dark-mode .waitlist-cta {
 }
 
 /* ═══ CONTENEDORES Y TARJETAS ═══ */
-body.dark-mode .hero__container,
+/* hero__container NO debe tener fondo - debe ser transparente */
 body.dark-mode .card,
 body.dark-mode .faq__item,
 body.dark-mode .pricing-card,
