@@ -82,16 +82,18 @@
     }
 
     .feature-card {
-      background: #f8f7f4;
-      padding: 2rem;
+      background: #ffffff;
+      padding: 2.5rem;
       border-radius: 1rem;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s, box-shadow 0.2s;
+      border: 2px solid #e5e5e0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
 
     .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+      border-color: #1a1a1a;
     }
 
     .feature-icon {
@@ -107,12 +109,13 @@
     }
 
     .feature-desc {
-      color: #666666;
+      color: #4a4a4a;
       line-height: 1.6;
+      font-size: 1rem;
     }
 
     .how-it-works {
-      background: #f8f7f4;
+      background: #ffffff;
       padding: 4rem 0;
     }
 
@@ -150,21 +153,23 @@
     }
 
     .step-desc {
-      color: #666666;
+      color: #4a4a4a;
       line-height: 1.6;
+      font-size: 1rem;
     }
 
     .testimonial-section {
       padding: 4rem 0;
-      background: #ffffff;
+      background: #f8f7f4;
     }
 
     .testimonial-card {
-      background: #f8f7f4;
+      background: #ffffff;
       padding: 3rem;
       border-radius: 1rem;
       max-width: 800px;
       margin: 2rem auto;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
     .testimonial-text {
@@ -198,10 +203,11 @@
       font-weight: 700;
       color: #1a1a1a;
       margin-bottom: 0.25rem;
+      font-size: 1rem;
     }
 
     .testimonial-info p {
-      color: #666666;
+      color: #4a4a4a;
       font-size: 0.875rem;
     }
 
@@ -233,31 +239,72 @@
 
     .resource-card {
       background: #ffffff;
-      border: 1px solid #e5e5e0;
+      border: 2px solid #e5e5e0;
       border-radius: 0.5rem;
       padding: 1.5rem;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .resource-card:hover {
       border-color: #1a1a1a;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
 
     .resource-title {
       font-weight: 600;
       color: #1a1a1a;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      line-height: 1.4;
     }
 
     .resource-link {
-      color: #d4c5a9;
+      color: #8a7a5e;
       font-size: 0.875rem;
       text-decoration: none;
       font-weight: 600;
+      display: inline-block;
+      padding: 0.5rem 0;
     }
 
     .resource-link:hover {
+      color: #1a1a1a;
       text-decoration: underline;
+    }
+
+    /* Sección específica para mejorar contraste */
+    .resources-section {
+      background: #ffffff;
+      padding: 4rem 0;
+    }
+
+    /* Mejorar legibilidad de títulos y subtítulos */
+    .section-title {
+      color: #1a1a1a !important;
+      -webkit-text-fill-color: #1a1a1a !important;
+    }
+
+    .section-subtitle {
+      color: #4a4a4a !important;
+      font-size: 1.125rem;
+    }
+
+    /* Asegurar buen contraste en stats */
+    .stat-label {
+      color: #e0e0e0 !important;
+    }
+
+    /* Mejorar hover en botones outline */
+    .btn-outline {
+      border: 2px solid #ffffff;
+      color: #ffffff;
+    }
+
+    .btn-outline:hover {
+      background-color: #ffffff;
+      color: #1a1a1a;
     }
   </style>
 </head>
@@ -316,7 +363,7 @@
     </section>
 
     <!-- FEATURES -->
-    <section style="padding: 4rem 0;">
+    <section style="padding: 4rem 0; background: #f8f7f4;">
       <div class="container">
         <h2 class="section-title">Todo lo que necesitas para impulsar tu carrera</h2>
         <p class="section-subtitle">
@@ -438,7 +485,7 @@
     </section>
 
     <!-- RESOURCES -->
-    <section style="padding: 4rem 0; background: #f8f7f4;">
+    <section class="resources-section">
       <div class="container">
         <h2 class="section-title">Recursos para actores</h2>
         <p class="section-subtitle">
